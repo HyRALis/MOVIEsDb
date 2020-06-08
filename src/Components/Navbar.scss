@@ -1,0 +1,55 @@
+@import "../variables.scss";
+
+.navbar-container {
+  height: 100vh;
+  width: $size;
+  position: fixed;
+  background-image: linear-gradient(to right, $primaryColor, $secundaryColor);
+  list-style: none;
+  @include flex(none, center, column);
+
+  .nav-logo {
+    height: $size;
+    width: $size;
+  }
+  .navbar-list {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    @include flex(center, center, column);
+    color: $linkColor;
+  }
+  .nav-item {
+    width: 100%;
+    padding: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-top-right-radius: 1rem;
+    &:hover {
+      background-color: $secundaryColor;
+      box-shadow: 15px 10px 25px 5px rgba(135, 135, 135, 0.8);
+      transition: 200ms ease;
+      .nav-link {
+        color: $linkHover;
+      }
+    }
+    .nav-link {
+      color: $linkColor;
+      text-decoration: none;
+      @include flex(center, center, row);
+      .nav-text {
+        margin-left: 1.5rem;
+        display: none;
+        font-size: 1.4rem;
+      }
+    }
+  }
+  &:hover {
+    width: 15rem;
+    transition: 300ms ease;
+    .nav-link {
+      .nav-text {
+        display: block;
+      }
+    }
+  }
+}

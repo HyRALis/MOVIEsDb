@@ -1,0 +1,16 @@
+$primaryColor: #93e5ab;
+$secundaryColor: #b5ffe1;
+$backColor: #c5e7e2dc;
+$linkColor: #1f7a8c;
+$linkHover: #042a2b;
+$marginSize: 0.2rem;
+$size: 5rem;
+$iconSize: 2.75rem;
+$fontSize: 16px;
+
+@mixin flex($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
