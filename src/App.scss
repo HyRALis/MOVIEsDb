@@ -10,6 +10,7 @@
 
 .App {
   @include flex(none, none, column);
+  position: relative;
   background-color: $backColor;
   height: 100vh;
   display: flex;
