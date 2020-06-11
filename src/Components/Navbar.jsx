@@ -11,22 +11,22 @@ export default function Navbar() {
       <img className="nav-logo" src={logo} alt="logo" />
       <ul className="navbar-list">
         <li className="nav-item">
-          <a href="#" className="nav-link">
+          <div className="nav-link">
             <MovieIcon height="2.75rem" width="2.75rem" fill="currentColor" />
             <span className="nav-text">Movies</span>
-          </a>
+          </div>
         </li>
         <li className="nav-item">
-          <a href="#" className="nav-link">
+          <div className="nav-link">
             <TVIcon height="2.75rem" width="2.75rem" fill="currentColor" />
             <span className="nav-text">TV series</span>
-          </a>
+          </div>
         </li>
         <li className="nav-item">
-          <a href="#" className="nav-link">
+          <div className="nav-link">
             <ArtistIcon height="2.75rem" width="2.75rem" fill="currentColor" />
             <span className="nav-text">Artists</span>
-          </a>
+          </div>
         </li>
       </ul>
     </div>

@@ -1,12 +1,10 @@
 @import "../variables.scss";
 
 .navbar-container {
-  height: 100vh;
-  width: $size;
-  position: fixed;
-  background-image: linear-gradient(to right, $primaryColor, $secundaryColor);
-  list-style: none;
-  @include flex(none, center, column);
+  width: 100%;
+  height: $size;
+  background-image: linear-gradient(to bottom, $primaryColor, $secundaryColor);
+  @include flex(center, none, row);
 
   .nav-logo {
     height: $size;
@@ -16,22 +14,12 @@
     width: 100%;
     height: 100%;
     list-style: none;
-    @include flex(center, center, column);
     color: $linkColor;
+    @include flex(center, none, row);
   }
   .nav-item {
-    width: 100%;
+    width: $size;
     padding: 1rem;
-    border-bottom-right-radius: 1rem;
-    border-top-right-radius: 1rem;
-    &:hover {
-      background-color: $secundaryColor;
-      box-shadow: 15px 10px 25px 5px rgba(135, 135, 135, 0.8);
-      transition: 200ms ease;
-      .nav-link {
-        color: $linkHover;
-      }
-    }
     .nav-link {
       color: $linkColor;
       text-decoration: none;
@@ -43,12 +31,40 @@
       }
     }
   }
-  &:hover {
-    width: 15rem;
-    transition: 300ms ease;
-    .nav-link {
-      .nav-text {
-        display: block;
+}
+
+@media (min-width: 800px) {
+  .navbar-container {
+    height: 100vh;
+    width: $size;
+    position: fixed;
+    @include flex(none, center, column);
+    background-image: linear-gradient(to right, $primaryColor, $secundaryColor);
+
+    .navbar-list {
+      @include flex(center, center, column);
+    }
+    .nav-item {
+      width: 100%;
+      height: initial;
+      border-bottom-right-radius: 1rem;
+      border-top-right-radius: 1rem;
+      &:hover {
+        background-color: $secundaryColor;
+        box-shadow: 15px 10px 25px 5px rgba(135, 135, 135, 0.8);
+        transition: 200ms ease;
+        .nav-link {
+          color: $linkHover;
+        }
+      }
+    }
+    &:hover {
+      width: 15rem;
+      transition: 300ms ease;
+      .nav-link {
+        .nav-text {
+          display: block;
+        }
       }
     }
   }

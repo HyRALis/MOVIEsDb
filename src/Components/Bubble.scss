@@ -1,0 +1,8 @@
+@import "../variables.scss";
+
+.bubble {
+  width: 40%;
+  margin: $marginSize;
+  border-radius: 0.8rem;
+  background-color: $primaryColor;
+}
