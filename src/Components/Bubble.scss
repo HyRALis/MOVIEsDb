@@ -1,8 +1,10 @@
 @import "../variables.scss";
 
 .bubble {
-  width: 40%;
-  margin: $marginSize;
+  margin: 0.1rem $marginSize;
   border-radius: 0.8rem;
-  background-color: $primaryColor;
+  background-image: linear-gradient(to bottom, $primaryColor, $secundaryColor);
+  color: $linkColor;
+  @include flex(center, center, row);
+  padding: 0.2rem;
 }

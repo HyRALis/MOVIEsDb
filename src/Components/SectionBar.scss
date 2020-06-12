@@ -5,17 +5,44 @@
   background-color: #ffffff;
   border-radius: 10px;
   padding: 1rem;
-  height: 18rem;
+  height: 25rem;
   width: 90%;
   box-shadow: 15px 10px 25px 5px rgba(135, 135, 135, 0.8);
   overflow-x: scroll;
+  overflow-y: hidden;
   .section-title {
-    margin: 1rem;
+    margin-bottom: 1rem;
     color: $primaryColor;
     font-size: 1.5rem;
   }
   .section-main {
     display: flex;
     flex-direction: row;
+    height: 14.5rem;
+    .card-container {
+      width: 12rem;
+      height: fit-content;
+      margin: $marginSize;
+      @include flex(center, center, column);
+      box-sizing: border-box;
+      border-radius: 10px;
+      img {
+        width: 12rem;
+        height: 14rem;
+        object-fit: cover;
+        box-sizing: border-box;
+        border-radius: 10px;
+      }
+      h3 {
+        margin: $marginSize;
+      }
+      .genres-container {
+        width: 100%;
+        @include flex(flex-start, center, row);
+        flex-wrap: wrap;
+        margin-top: $marginSize;
+        margin-bottom: $marginSize;
+      }
+    }
   }
 }

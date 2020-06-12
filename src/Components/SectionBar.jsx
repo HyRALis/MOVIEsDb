@@ -10,17 +10,17 @@ export default function SectionBar({}) {
   const TrendingAll = useSelector((state) => state.landing.trending);
 
   const cardTitle = (listItem) => {
-    if (typeof listItem.original_name != "undefined") {
-      return listItem.original_name;
-    } else if (typeof listItem.title != "undefined") {
+    if (typeof listItem.title != "undefined") {
       return listItem.title;
+    } else if (typeof listItem.original_name != "undefined") {
+      return listItem.original_name;
     } else if (typeof listItem.original_title != "undefined") {
       return listItem.original_title;
     }
   };
 
   const imageBuilder = (listItem) => {
-    const imgUrl = `https://image.tmdb.org/t/p/original${listItem.poster_path}`;
+    const imgUrl = `https://image.tmdb.org/t/p/w500${listItem.poster_path}`;
     return imgUrl;
   };
 
@@ -35,7 +35,14 @@ export default function SectionBar({}) {
       <div className="section-title">Section Title</div>
       <div className="section-main">
         {typeof PopularMovies != "undefined"
-          ? PopularMovies.map((movie) => <Card />)
+          ? PopularMovies.map((movie) => (
+              <Card
+                key={movie.id}
+                Content={movie}
+                CardTitle={cardTitle}
+                ImageBuilder={imageBuilder}
+              />
+            ))
           : ""}
       </div>
     </div>
