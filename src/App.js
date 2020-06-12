@@ -8,18 +8,31 @@ import Card from "./Components/Card";
 import SearchBar from "./Components/SearchBar";
 import SectionBar from "./Components/SectionBar";
 
-import fetchLanding from "./Redux/Actions/landingActions";
+import {
+  fetchPopuMovies,
+  fetchPopuSeries,
+  fetchTrendingAll,
+  fetchGenres,
+} from "./Redux/Actions/landingActions";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchLanding());
+    dispatch(fetchPopuMovies());
+    dispatch(fetchPopuSeries());
+    dispatch(fetchTrendingAll());
+    dispatch(fetchGenres());
   }, []);
 
   return (
     <div className="App">
       <Navbar />
+      <main>
+        <SectionBar />
+        <SectionBar />
+        <SectionBar />
+      </main>
       <SearchBar />
     </div>
   );

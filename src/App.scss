@@ -13,5 +13,8 @@
   position: relative;
   background-color: $backColor;
   height: 100vh;
-  display: flex;
+  overflow-y: hidden;
+  main {
+    overflow-y: scroll;
+  }
 }

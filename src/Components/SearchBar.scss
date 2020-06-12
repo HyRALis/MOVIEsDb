@@ -1,7 +1,42 @@
 @import "../variables.scss";
 
-.search-bar {
+.search-container {
+  width: 100%;
   position: absolute;
-  bottom: $marginSize;
-  
+  bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .search-bar {
+    position: absolute;
+    bottom: $marginSize;
+    @include flex(center, none, row);
+    width: 90%;
+    margin: auto;
+    input {
+      width: 50%;
+      font-size: 18px;
+      padding: 0.7rem;
+      box-sizing: border-box;
+      text-transform: capitalize;
+      color: $linkColor;
+      background-color: $secundaryColor;
+      border: 1px solid $primaryColor;
+      border-right: none;
+      outline: none;
+    }
+    button {
+      width: 25%;
+      font-size: 18px;
+      padding: 0.7rem;
+      box-sizing: border-box;
+      text-transform: capitalize;
+      color: $linkColor;
+      background-color: $secundaryColor;
+      border: 1px solid $primaryColor;
+      border-left: none;
+      border-right: none;
+    }
+  }
 }
