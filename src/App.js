@@ -12,26 +12,28 @@ import {
   fetchPopuMovies,
   fetchPopuSeries,
   fetchTrendingAll,
-  fetchGenres,
+  fetchMoviesGenres,
+  fetchSeriesGenres,
 } from "./Redux/Actions/landingActions";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchMoviesGenres());
+    dispatch(fetchSeriesGenres());
     dispatch(fetchPopuMovies());
     dispatch(fetchPopuSeries());
     dispatch(fetchTrendingAll());
-    dispatch(fetchGenres());
   }, []);
 
   return (
     <div className="App">
       <Navbar />
       <main>
-        <SectionBar />
-        <SectionBar />
-        <SectionBar />
+        <SectionBar SectionType={1} />
+        <SectionBar SectionType={2} />
+        <SectionBar SectionType={3} />
       </main>
       <SearchBar />
     </div>

@@ -2,7 +2,8 @@ import * as actionTypes from "../Actions/actionTypes";
 
 let initialState = {
   isActive: true,
-  genres: [],
+  moviesGenres: [],
+  seriesGenres: [],
   popularMovies: [],
   popularSeries: [],
   trending: [],
@@ -25,10 +26,15 @@ export default function landingReducer(state = initialState, action) {
         ...state,
         trending: action.trending,
       };
-    case actionTypes.fetchGenres:
+    case actionTypes.fetchMoviesGenres:
       return {
         ...state,
-        genres: action.genres,
+        moviesGenres: action.moviesGenres,
+      };
+    case actionTypes.fetchSeriesGenres:
+      return {
+        ...state,
+        seriesGenres: action.seriesGenres,
       };
     default:
       return state;

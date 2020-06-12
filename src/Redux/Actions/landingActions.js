@@ -45,17 +45,32 @@ export function fetchTrendingAll() {
   };
 }
 
-export function fetchGenres() {
+export function fetchMoviesGenres() {
   return async function (dispatch) {
     const key = "a7bc4dc45ae0ba1dc816316bb6356b0d";
-    const fetchedGenresData = await fetch(
+    const fetchedMoviesGenresData = await fetch(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=${key}&language=en-US`
     );
-    const GenresData = await fetchedGenresData.json();
+    const MoviesGenresData = await fetchedMoviesGenresData.json();
 
     await dispatch({
-      type: actionTypes.fetchGenres,
-      genres: GenresData.genres,
+      type: actionTypes.fetchMoviesGenres,
+      moviesGenres: MoviesGenresData.genres,
+    });
+  };
+}
+
+export function fetchSeriesGenres() {
+  return async function (dispatch) {
+    const key = "a7bc4dc45ae0ba1dc816316bb6356b0d";
+    const fetchedSeriesGenresData = await fetch(
+      `https://api.themoviedb.org/3/genre/tv/list?api_key=${key}&language=en-US`
+    );
+    const SeriesGenresData = await fetchedSeriesGenresData.json();
+
+    await dispatch({
+      type: actionTypes.fetchSeriesGenres,
+      seriesGenres: SeriesGenresData.genres,
     });
   };
 }

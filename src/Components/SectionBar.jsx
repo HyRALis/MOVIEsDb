@@ -1,13 +1,26 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import "./SectionBar.scss";
 import Card from "./Card";
 
-export default function SectionBar({}) {
+export default function SectionBar({ SectionType }) {
   const PopularMovies = useSelector((state) => state.landing.popularMovies);
   const PopularSeries = useSelector((state) => state.landing.popularSeries);
   const TrendingAll = useSelector((state) => state.landing.trending);
+
+  const SectionSelector = (SectionType) => {
+    switch (SectionType) {
+      case 1:
+        return PopularMovies;
+      case 2:
+        return PopularSeries;
+      case 3:
+        return TrendingAll;
+      default:
+        return TrendingAll;
+    }
+  };
 
   const cardTitle = (listItem) => {
     if (typeof listItem.title != "undefined") {
@@ -30,15 +43,16 @@ export default function SectionBar({}) {
     document.getElementsByClassName("section-container")[0].scrollLeft -=
       delta * 40;
   };
+
   return (
     <div className="section-container" onWheel={HorisontalScrolling}>
       <div className="section-title">Section Title</div>
       <div className="section-main">
         {typeof PopularMovies != "undefined"
-          ? PopularMovies.map((movie) => (
+          ? SectionSelector(SectionType).map((item) => (
               <Card
-                key={movie.id}
-                Content={movie}
+                key={item.id}
+                Content={item}
                 CardTitle={cardTitle}
                 ImageBuilder={imageBuilder}
               />

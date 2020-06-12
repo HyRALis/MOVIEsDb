@@ -8,6 +8,7 @@ export const fetchLatestSeries = "FETCH_LATEST_SERIES";
 
 export const fetchTrendingAll = "FETCH_TRENDING_ALL";
 
-export const fetchGenres = "FETCH_GENRES";
+export const fetchMoviesGenres = "FETCH_MOVIES_GENRES";
+export const fetchSeriesGenres = "FETCH_SERIES_GENRES";
 
 export const landing = "LANDING";
