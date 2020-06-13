@@ -18,3 +18,18 @@
     overflow-y: scroll;
   }
 }
+
+::-webkit-scrollbar {
+  height: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, $primaryColor, $secundaryColor);
+  border-radius: 10px;
+}

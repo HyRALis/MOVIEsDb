@@ -18,7 +18,20 @@ export default function SectionBar({ SectionType }) {
       case 3:
         return TrendingAll;
       default:
-        return TrendingAll;
+        return null;
+    }
+  };
+
+  const SectionTitleSelector = (SectionType) => {
+    switch (SectionType) {
+      case 1:
+        return "Popular Movies";
+      case 2:
+        return "Popular Series";
+      case 3:
+        return "Trending";
+      default:
+        return "Trending";
     }
   };
 
@@ -46,7 +59,7 @@ export default function SectionBar({ SectionType }) {
 
   return (
     <div className="section-container" onWheel={HorisontalScrolling}>
-      <div className="section-title">Section Title</div>
+      <div className="section-title">{SectionTitleSelector(SectionType)}</div>
       <div className="section-main">
         {typeof PopularMovies != "undefined"
           ? SectionSelector(SectionType).map((item) => (

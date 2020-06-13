@@ -4,5 +4,5 @@ import differentTabReducers from "./differentTabReducer";
 
 export default combineReducers({
   landing: landingReducer,
-  //differentTab: differentTabReducers,
+  differentTab: differentTabReducers,
 });

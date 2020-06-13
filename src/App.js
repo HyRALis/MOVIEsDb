@@ -16,6 +16,14 @@ import {
   fetchSeriesGenres,
 } from "./Redux/Actions/landingActions";
 
+import {
+  fetchRatedMovies,
+  fetchTrendingMovies,
+  fetchTrendingSeries,
+  fetchRatedSeries,
+} from "./Redux/Actions/movieActions";
+import {} from "./Redux/Actions/actionTypes";
+
 function App() {
   const dispatch = useDispatch();
 
@@ -25,6 +33,10 @@ function App() {
     dispatch(fetchPopuMovies());
     dispatch(fetchPopuSeries());
     dispatch(fetchTrendingAll());
+    dispatch(fetchRatedMovies());
+    dispatch(fetchTrendingMovies());
+    dispatch(fetchTrendingSeries());
+    dispatch(fetchRatedSeries());
   }, []);
 
   return (
