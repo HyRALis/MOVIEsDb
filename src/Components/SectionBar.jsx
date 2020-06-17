@@ -6,32 +6,36 @@ import Card from "./Card";
 
 export default function SectionBar({ SectionType }) {
   const PopularMovies = useSelector((state) => state.landing.popularMovies);
+  const RatedMovies = useSelector((state) => state.differentTab.ratedMovies);
   const PopularSeries = useSelector((state) => state.landing.popularSeries);
+  const RatedSeries = useSelector((state) => state.differentTab.ratedSeries);
   const TrendingAll = useSelector((state) => state.landing.trending);
+  const TrendingMovies = useSelector(
+    (state) => state.differentTab.trendingMovies
+  );
+  const TrendingSeries = useSelector(
+    (state) => state.differentTab.trendingSeries
+  );
 
   const SectionSelector = (SectionType) => {
     switch (SectionType) {
-      case 1:
-        return PopularMovies;
-      case 2:
-        return PopularSeries;
-      case 3:
-        return TrendingAll;
+      case "POPULAR_MOVIES":
+        return { Data: PopularMovies, Title: "Popular Movies" };
+      case "RATED_MOVIES":
+        return { Data: RatedMovies, Title: "Highest Rated Movies" };
+      case "TRENDING_MOVIES":
+        return { Data: TrendingMovies, Title: "Trending Movies" };
+      case "POPULAR_SERIES":
+        return { Data: PopularSeries, Title: "Popular Series" };
+      case "RATED_SERIES":
+        return { Data: RatedSeries, Title: "Higest Rated Series" };
+      case "TRENDING_SERIES":
+        return { Data: TrendingSeries, Title: "Trending Series" };
+      case "TRENDING_ALL":
+        return { Data: TrendingAll, Title: "Trending" };
+
       default:
         return null;
-    }
-  };
-
-  const SectionTitleSelector = (SectionType) => {
-    switch (SectionType) {
-      case 1:
-        return "Popular Movies";
-      case 2:
-        return "Popular Series";
-      case 3:
-        return "Trending";
-      default:
-        return "Trending";
     }
   };
 
@@ -59,10 +63,10 @@ export default function SectionBar({ SectionType }) {
 
   return (
     <div className="section-container" onWheel={HorisontalScrolling}>
-      <div className="section-title">{SectionTitleSelector(SectionType)}</div>
+      <div className="section-title">{SectionSelector(SectionType).Title}</div>
       <div className="section-main">
-        {typeof PopularMovies != "undefined"
-          ? SectionSelector(SectionType).map((item) => (
+        {PopularMovies.length !== 0
+          ? SectionSelector(SectionType).Data.map((item) => (
               <Card
                 key={item.id}
                 Content={item}

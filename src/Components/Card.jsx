@@ -21,7 +21,7 @@ export default function Card({ Content, ImageBuilder, CardTitle }) {
       <div className="genres-container">
         {seriesGenres.length !== 0 && moviesGenres.length !== 0
           ? Content.genre_ids.map((genre) => (
-              <Bubble Genre={GenreIdToString(genre, genreList)} />
+              <Bubble key={genre} Genre={GenreIdToString(genre, genreList)} />
             ))
           : ""}
       </div>

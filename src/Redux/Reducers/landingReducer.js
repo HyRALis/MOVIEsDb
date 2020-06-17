@@ -1,7 +1,7 @@
 import * as actionTypes from "../Actions/actionTypes";
 
 let initialState = {
-  isActive: true,
+  pageSelected: "HOME",
   moviesGenres: [],
   seriesGenres: [],
   popularMovies: [],

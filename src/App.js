@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./App.scss";
-
+import SectionConsts from "./sectionsConsts";
 import Navbar from "./Components/Navbar";
-import Card from "./Components/Card";
 import SearchBar from "./Components/SearchBar";
 import SectionBar from "./Components/SectionBar";
 
@@ -39,14 +38,20 @@ function App() {
     dispatch(fetchRatedSeries());
   }, []);
 
+  const pageSelector = useSelector((state) => state.landing.pageSelected);
+
   return (
     <div className="App">
       <Navbar />
-      <main>
-        <SectionBar SectionType={1} />
-        <SectionBar SectionType={2} />
-        <SectionBar SectionType={3} />
-      </main>
+      {pageSelector !== "ACTORS" ? (
+        <main>
+          <SectionBar SectionType={SectionConsts[pageSelector][0]} />
+          <SectionBar SectionType={SectionConsts[pageSelector][1]} />
+          <SectionBar SectionType={SectionConsts[pageSelector][2]} />
+        </main>
+      ) : (
+        ""
+      )}
       <SearchBar />
     </div>
   );
