@@ -43,14 +43,16 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {pageSelector !== "ACTORS" ? (
+      {pageSelector !== "ARTISTS" ? (
         <main>
           <SectionBar SectionType={SectionConsts[pageSelector][0]} />
           <SectionBar SectionType={SectionConsts[pageSelector][1]} />
           <SectionBar SectionType={SectionConsts[pageSelector][2]} />
         </main>
       ) : (
-        ""
+        <div>
+          <h1> UNDER CONSTRUCTION !</h1>
+        </div>
       )}
       <SearchBar />
     </div>

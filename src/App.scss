@@ -9,16 +9,27 @@
 }
 
 .App {
-  @include flex(none, none, column);
+  @include flex(center, none, column);
   position: relative;
   background-color: $backColor;
   height: 100vh;
+  width: 100%;
   overflow-y: hidden;
   main {
     overflow-y: scroll;
+    margin-top: $size;
   }
 }
 
+@media (min-width: 800px) {
+  .App {
+    display: flex;
+    main {
+      margin-top: 0;
+      margin-left: $size;
+    }
+  }
+}
 ::-webkit-scrollbar {
   height: 0.5rem;
 }
@@ -32,4 +43,7 @@
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(to bottom, $primaryColor, $secundaryColor);
   border-radius: 10px;
+  &:hover {
+    background-color: $secundaryColor;
+  }
 }

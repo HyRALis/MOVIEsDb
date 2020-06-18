@@ -1,8 +1,11 @@
 @import "../variables.scss";
 
 .navbar-container {
-  width: 100%;
+  width: 100vw;
   height: $size;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-image: linear-gradient(to bottom, $primaryColor, $secundaryColor);
   @include flex(center, none, row);
 
@@ -21,7 +24,6 @@
     width: $size;
     padding: 1rem;
     .nav-link {
-      color: $linkColor;
       text-decoration: none;
       @include flex(center, center, row);
       .nav-text {
@@ -30,14 +32,24 @@
         font-size: 1.4rem;
       }
     }
+    &:hover {
+      background-color: $secundaryColor;
+      color: $linkHover;
+      box-shadow: 15px 10px 25px 5px rgba(135, 135, 135, 0.8);
+      cursor: pointer;
+    }
   }
+}
+
+.active {
+  background-color: $linkColor;
+  color: $primaryColor;
 }
 
 @media (min-width: 800px) {
   .navbar-container {
     height: 100vh;
     width: $size;
-    position: fixed;
     @include flex(none, center, column);
     background-image: linear-gradient(to right, $primaryColor, $secundaryColor);
 
@@ -53,6 +65,7 @@
         background-color: $secundaryColor;
         box-shadow: 15px 10px 25px 5px rgba(135, 135, 135, 0.8);
         transition: 200ms ease;
+        cursor: pointer;
         .nav-link {
           color: $linkHover;
         }

@@ -36,6 +36,27 @@ export default function landingReducer(state = initialState, action) {
         ...state,
         seriesGenres: action.seriesGenres,
       };
+    case actionTypes.movies:
+      return {
+        ...state,
+        pageSelected: action.pageSelected,
+      };
+    case actionTypes.series:
+      return {
+        ...state,
+        pageSelected: action.pageSelected,
+      };
+    case actionTypes.landing:
+      return {
+        ...state,
+        pageSelected: action.pageSelected,
+      };
+    case actionTypes.artists:
+      return {
+        ...state,
+        pageSelected: action.pageSelected,
+      };
+
     default:
       return state;
   }

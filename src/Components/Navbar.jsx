@@ -1,28 +1,56 @@
 import React from "react";
-import logo from "../Assets/images/logo.png";
+import { useSelector, useDispatch } from "react-redux";
+
 import { ReactComponent as MovieIcon } from "../Assets/svgs/movies.svg";
 import { ReactComponent as TVIcon } from "../Assets/svgs/tvseries.svg";
 import { ReactComponent as ArtistIcon } from "../Assets/svgs/artists.svg";
 import "./Navbar.scss";
+import logo from "../Assets/images/logo.png";
+
+import {
+  moviesActive,
+  seriesActive,
+  homeActive,
+  artistActive,
+} from "../Redux/Actions/landingActions";
+
+import { movies, series, artists } from "../Redux/Actions/actionTypes";
 
 export default function Navbar() {
+  const dispatch = useDispatch();
+  let navActive = useSelector((state) => state.landing.pageSelected);
+
   return (
     <div className="navbar-container">
-      <img className="nav-logo" src={logo} alt="logo" />
+      <img
+        className="nav-logo"
+        src={logo}
+        alt="logo"
+        onClick={() => dispatch(homeActive())}
+      />
       <ul className="navbar-list">
-        <li className="nav-item">
+        <li
+          className={navActive === movies ? "nav-item active" : "nav-item"}
+          onClick={() => dispatch(moviesActive())}
+        >
           <div className="nav-link">
             <MovieIcon height="2.75rem" width="2.75rem" fill="currentColor" />
             <span className="nav-text">Movies</span>
           </div>
         </li>
-        <li className="nav-item">
+        <li
+          className={navActive === series ? "nav-item active" : "nav-item"}
+          onClick={() => dispatch(seriesActive())}
+        >
           <div className="nav-link">
             <TVIcon height="2.75rem" width="2.75rem" fill="currentColor" />
             <span className="nav-text">TV series</span>
           </div>
         </li>
-        <li className="nav-item">
+        <li
+          className={navActive === artists ? "nav-item active" : "nav-item"}
+          onClick={() => dispatch(artistActive())}
+        >
           <div className="nav-link">
             <ArtistIcon height="2.75rem" width="2.75rem" fill="currentColor" />
             <span className="nav-text">Artists</span>

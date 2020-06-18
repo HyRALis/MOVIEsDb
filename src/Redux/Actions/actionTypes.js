@@ -11,4 +11,7 @@ export const fetchTrendingAll = "FETCH_TRENDING_ALL";
 export const fetchMoviesGenres = "FETCH_MOVIES_GENRES";
 export const fetchSeriesGenres = "FETCH_SERIES_GENRES";
 
-export const landing = "LANDING";
+export const landing = "HOME";
+export const movies = "MOVIES";
+export const series = "SERIES";
+export const artists = "ARTISTS";
