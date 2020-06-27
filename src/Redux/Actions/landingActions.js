@@ -89,3 +89,10 @@ export const artistActive = () => (dispatch) => {
     pageSelected: actionTypes.artists,
   });
 };
+
+export const changeWidth = (width) => {
+  return {
+    type: actionTypes.resizeWindow,
+    payload: width,
+  };
+};

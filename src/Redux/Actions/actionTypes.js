@@ -15,3 +15,8 @@ export const landing = "HOME";
 export const movies = "MOVIES";
 export const series = "SERIES";
 export const artists = "ARTISTS";
+
+export const slideLeft = "SLIDE_LEFT";
+export const slideRight = "SLIDE_RIGHT";
+
+export const resizeWindow = "RESIZE_WINDOW";

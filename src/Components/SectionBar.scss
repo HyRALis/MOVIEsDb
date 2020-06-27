@@ -14,11 +14,13 @@
     margin-bottom: 1rem;
     color: $primaryColor;
     font-size: 1.5rem;
+    // position: fixed;
   }
   .section-main {
     display: flex;
     flex-direction: row;
     text-align: center;
+    // margin-top: 2.5rem;
     .card-container {
       width: 12rem;
       height: fit-content;
@@ -35,6 +37,7 @@
       }
       h3 {
         margin: $marginSize;
+        color: $primaryColor;
       }
       .genres-container {
         width: 100%;

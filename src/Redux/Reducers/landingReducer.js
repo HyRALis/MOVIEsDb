@@ -2,6 +2,7 @@ import * as actionTypes from "../Actions/actionTypes";
 
 let initialState = {
   pageSelected: "HOME",
+  width: 0,
   moviesGenres: [],
   seriesGenres: [],
   popularMovies: [],
@@ -56,7 +57,11 @@ export default function landingReducer(state = initialState, action) {
         ...state,
         pageSelected: action.pageSelected,
       };
-
+    case actionTypes.resizeWindow:
+      return {
+        ...state,
+        width: action.payload,
+      };
     default:
       return state;
   }
