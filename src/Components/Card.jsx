@@ -21,7 +21,7 @@ export default function Card({
       <div className="genres-container">
         {seriesGenres.length !== 0 &&
         moviesGenres.length !== 0 &&
-        Content.genre_ids !== 0
+        Content.genre_ids !== undefined
           ? Content.genre_ids.map((genre) => (
               <Bubble key={genre} Genre={GenreToString(genre, genreList)} />
             ))
