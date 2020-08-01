@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import "../../variables.scss";
 
 .section-container {
   margin: 1rem;
@@ -10,6 +10,8 @@
   box-shadow: 15px 10px 25px 5px rgba(135, 135, 135, 0.8);
   overflow-x: scroll;
   overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
   .section-title {
     margin-bottom: 1rem;
     color: $primaryColor;

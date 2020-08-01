@@ -44,15 +44,17 @@ export default function SectionBar({
     }
   };
 
-  const HorisontalScrolling = (evt) => {
-    evt = window.event || evt;
-    var delta = Math.max(-1, Math.min(1, evt.wheelDelta || -evt.detail));
-    document.getElementsByClassName("section-container")[0].scrollLeft -=
-      delta * 40;
-  };
+  // const HorisontalScrolling = (evt) => {
+  //   var delta = Math.max(
+  //     -1,
+  //     Math.min(1, window.event.wheelDelta || -window.event.detail)
+  //   );
+  //   evt.currentTarget.scrollLeft = evt.currentTarget.scrollLeft - delta * 40;
+  //   evt.preventDefault();
+  // };
 
   return (
-    <div className="section-container" onWheel={HorisontalScrolling}>
+    <div className="section-container">
       <div className="section-title">{SectionSelector(SectionType).Title}</div>
       <div className="section-main">
         {PopularMovies.length !== 0

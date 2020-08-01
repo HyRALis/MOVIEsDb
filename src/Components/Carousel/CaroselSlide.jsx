@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import "./Carosel.scss";
-import Bubble from "./Bubble";
+import Bubble from "../Bubble";
 import { useEffect } from "react";
 
 export default function CaroselSlide({
@@ -38,17 +38,15 @@ export default function CaroselSlide({
           <div className="slide-info">
             <h1 className="title">{CardTitle(Content)}</h1>
             <div className="genres-container">
-              {seriesGenres.length !== 0 && moviesGenres.length !== 0
-                ? Content.genre_ids.map((genre) => (
-                    <Bubble
-                      key={genre}
-                      Genre={GenreToString(genre, genreList)}
-                    />
-                  ))
-                : ""}
+              {seriesGenres.length !== 0 &&
+                moviesGenres.length !== 0 &&
+                Content.genre_ids.map((genre) => (
+                  <Bubble key={genre} Genre={GenreToString(genre, genreList)} />
+                ))}
             </div>
             <h3 className="chapter-title"> Description </h3>
             <h4 className="description">{Content.overview}</h4>
+            <button>More Details</button>
           </div>
         </div>
       </div>

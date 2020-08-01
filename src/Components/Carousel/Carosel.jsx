@@ -8,7 +8,7 @@ import {
 
 import "./Carosel.scss";
 import CaroselSlide from "./CaroselSlide";
-import { changeSlide } from "../Redux/Actions/caroselActions";
+import { changeSlide } from "../../Redux/Actions/caroselActions";
 
 export default function Carosel({
   SectionType,

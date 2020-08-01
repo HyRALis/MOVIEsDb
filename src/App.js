@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "./App.scss";
-import SectionConsts from "./sectionsConsts";
 import Navbar from "./Components/Navbar";
-import SearchBar from "./Components/SearchBar";
-import SectionBar from "./Components/SectionBar";
-import Carosel from "./Components/Carosel";
+import LandingMain from "./Components/LandingMain";
+import SearchBar from "./Components/Search/SearchBar";
+import ItemInfo from "./Components/ItemInfo";
+import ImageNotFound from "./Assets/images/ImageNotFound.png";
 
 import {
   fetchPopuMovies,
@@ -39,7 +40,11 @@ function App() {
     dispatch(fetchTrendingMovies());
     dispatch(fetchTrendingSeries());
     dispatch(fetchRatedSeries());
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    windowResize();
+  });
 
   const pageSelector = useSelector((state) => state.landing.pageSelected);
 
@@ -63,55 +68,62 @@ function App() {
   };
 
   const imageBuilder = (listItem) => {
-    const posterImgUrl = `https://image.tmdb.org/t/p/w500${listItem.poster_path}`;
-    const backdropImgUrl = `https://image.tmdb.org/t/p/w500${listItem.backdrop_path}`;
+    let posterImgUrl;
+    let backdropImgUrl;
+    if (listItem.poster_path == null && listItem.backdrop_path == null) {
+      posterImgUrl = ImageNotFound;
+      backdropImgUrl = ImageNotFound;
+    } else if (
+      listItem.poster_path !== null &&
+      listItem.backdrop_path !== null
+    ) {
+      posterImgUrl = `https://image.tmdb.org/t/p/w500${listItem.poster_path}`;
+      backdropImgUrl = `https://image.tmdb.org/t/p/w500${listItem.backdrop_path}`;
+    } else if (
+      listItem.poster_path !== null &&
+      listItem.backdrop_path == null
+    ) {
+      posterImgUrl = `https://image.tmdb.org/t/p/w500${listItem.poster_path}`;
+      backdropImgUrl = ImageNotFound;
+    } else if (
+      listItem.poster_path == null &&
+      listItem.backdrop_path !== null
+    ) {
+      posterImgUrl = ImageNotFound;
+      backdropImgUrl = `https://image.tmdb.org/t/p/w500${listItem.backdrop_path}`;
+    }
+
     return { Poster: posterImgUrl, Backdrop: backdropImgUrl };
   };
 
-  const GenreIdToString = (genre_id, genreList) => {
+  const genreIdToString = (genre_id, genreList) => {
     const genreName = genreList.filter((genre) => genre.id === genre_id);
     return genreName[0].name;
   };
 
   return (
     <div className="App">
-      <Navbar />
-      {pageSelector !== "ARTISTS" ? (
-        <main>
-          {window.innerWidth > 800 ? (
-            <Carosel
-              SectionType={SectionConsts[pageSelector][0]}
-              CardTitle={cardTitle}
-              ImageBuilder={imageBuilder}
-              GenreToString={GenreIdToString}
-            />
-          ) : (
-            <SectionBar
-              SectionType={SectionConsts[pageSelector][0]}
-              CardTitle={cardTitle}
-              ImageBuilder={imageBuilder}
-              GenreToString={GenreIdToString}
-            />
-          )}
-          <SectionBar
-            SectionType={SectionConsts[pageSelector][1]}
-            CardTitle={cardTitle}
-            ImageBuilder={imageBuilder}
-            GenreToString={GenreIdToString}
+      <Router>
+        <Navbar />
+
+        {pageSelector !== "ARTISTS" ? (
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <LandingMain
+                {...props}
+                CardTitle={cardTitle}
+                ImageBuilder={imageBuilder}
+                GenreIdToString={genreIdToString}
+              />
+            )}
           />
-          <SectionBar
-            SectionType={SectionConsts[pageSelector][2]}
-            CardTitle={cardTitle}
-            ImageBuilder={imageBuilder}
-            GenreToString={GenreIdToString}
-          />
-        </main>
-      ) : (
-        <div>
-          <h1> UNDER CONSTRUCTION !</h1>
-        </div>
-      )}
-      <SearchBar />
+        ) : (
+          <main>Under Construction :)</main>
+        )}
+        <SearchBar />
+      </Router>
     </div>
   );
 }

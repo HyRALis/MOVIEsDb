@@ -2,7 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import "./SectionBar.scss";
-import Bubble from "./Bubble";
+import Bubble from "../Bubble";
+import { Link } from "react-router-dom";
 
 export default function Card({
   Content,
@@ -15,7 +16,7 @@ export default function Card({
   const genreList = [...moviesGenres, ...seriesGenres];
 
   return (
-    <div className="card-container">
+    <Link className="card-container">
       <img src={ImageBuilder(Content).Poster} alt={CardTitle(Content)} />
       <h3>{CardTitle(Content)}</h3>
       <div className="genres-container">
@@ -27,6 +28,6 @@ export default function Card({
             ))
           : ""}
       </div>
-    </div>
+    </Link>
   );
 }
