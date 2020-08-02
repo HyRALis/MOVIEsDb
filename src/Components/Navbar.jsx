@@ -15,6 +15,7 @@ import {
 } from "../Redux/Actions/landingActions";
 
 import { movies, series, artists } from "../Redux/Actions/actionTypes";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -29,33 +30,49 @@ export default function Navbar() {
         onClick={() => dispatch(homeActive())}
       />
       <ul className="navbar-list">
-        <li
+        <Link
+          to="/"
+          style={{ textDecoration: "none" }}
           className={navActive === movies ? "nav-item active" : "nav-item"}
           onClick={() => dispatch(moviesActive())}
         >
-          <div className="nav-link">
-            <MovieIcon height="2.75rem" width="2.75rem" fill="currentColor" />
-            <span className="nav-text">Movies</span>
-          </div>
-        </li>
-        <li
+          <li>
+            <div className="nav-link">
+              <MovieIcon height="2.75rem" width="2.75rem" fill="currentColor" />
+              <span className="nav-text">Movies</span>
+            </div>
+          </li>
+        </Link>
+        <Link
+          to="/"
+          style={{ textDecoration: "none" }}
           className={navActive === series ? "nav-item active" : "nav-item"}
           onClick={() => dispatch(seriesActive())}
         >
-          <div className="nav-link">
-            <TVIcon height="2.75rem" width="2.75rem" fill="currentColor" />
-            <span className="nav-text">TV series</span>
-          </div>
-        </li>
-        <li
+          <li>
+            <div className="nav-link">
+              <TVIcon height="2.75rem" width="2.75rem" fill="currentColor" />
+              <span className="nav-text">TV series</span>
+            </div>
+          </li>
+        </Link>
+        <Link
+          to="/"
+          style={{ textDecoration: "none" }}
           className={navActive === artists ? "nav-item active" : "nav-item"}
           onClick={() => dispatch(artistActive())}
         >
-          <div className="nav-link">
-            <ArtistIcon height="2.75rem" width="2.75rem" fill="currentColor" />
-            <span className="nav-text">Artists</span>
-          </div>
-        </li>
+          <li>
+            <div className="nav-link">
+              <ArtistIcon
+                height="2.75rem"
+                width="2.75rem"
+                fill="currentColor"
+              />
+              <span className="nav-text">Artists</span>
+            </div>
+          </li>
+        </Link>
       </ul>
     </div>
   );

@@ -6,6 +6,9 @@ export const fetchPopuMovies = () => async (dispatch) => {
     `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false`
   );
   const MoviesData = await fetchedMoviesData.json();
+  MoviesData.results.forEach((movie) => {
+    movie.media_type = "movie";
+  });
 
   await dispatch({
     type: actionTypes.fetchPopuMovies,
@@ -19,6 +22,9 @@ export const fetchPopuSeries = () => async (dispatch) => {
     `https://api.themoviedb.org/3/discover/tv?api_key=${key}&language=en-US&sort_by=popularity.desc&page=1&include_null_first_air_dates=false`
   );
   const SeriesData = await fetchedSeriesData.json();
+  SeriesData.results.forEach((movie) => {
+    movie.media_type = "tv";
+  });
 
   await dispatch({
     type: actionTypes.fetchPopuSeries,

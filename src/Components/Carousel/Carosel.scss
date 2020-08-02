@@ -75,6 +75,22 @@
             margin: 1rem;
             margin-left: 0;
           }
+          .btn-cta {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 10px;
+            padding: $marginSize;
+            background-color: $primaryColor;
+            color: $linkColor;
+            font-size: 1.1rem;
+            font-weight: bold;
+            &:hover {
+              background-color: $secundaryColor;
+              color: $linkHover;
+              cursor: pointer;
+            }
+          }
         }
       }
     }

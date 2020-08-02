@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.scss";
 import Navbar from "./Components/Navbar";
@@ -47,6 +47,8 @@ function App() {
   });
 
   const pageSelector = useSelector((state) => state.landing.pageSelected);
+  const itemType = useSelector((state) => state.details.itemType);
+  const itemId = useSelector((state) => state.details.itemId);
 
   const windowResize = () => {
     window.addEventListener("resize", dispatch(changeWidth(window.innerWidth)));
@@ -77,20 +79,20 @@ function App() {
       listItem.poster_path !== null &&
       listItem.backdrop_path !== null
     ) {
+      backdropImgUrl = `https://image.tmdb.org/t/p/original${listItem.backdrop_path}`;
       posterImgUrl = `https://image.tmdb.org/t/p/w500${listItem.poster_path}`;
-      backdropImgUrl = `https://image.tmdb.org/t/p/w500${listItem.backdrop_path}`;
     } else if (
       listItem.poster_path !== null &&
       listItem.backdrop_path == null
     ) {
-      posterImgUrl = `https://image.tmdb.org/t/p/w500${listItem.poster_path}`;
       backdropImgUrl = ImageNotFound;
+      posterImgUrl = `https://image.tmdb.org/t/p/w500${listItem.poster_path}`;
     } else if (
       listItem.poster_path == null &&
       listItem.backdrop_path !== null
     ) {
+      backdropImgUrl = `https://image.tmdb.org/t/p/original${listItem.backdrop_path}`;
       posterImgUrl = ImageNotFound;
-      backdropImgUrl = `https://image.tmdb.org/t/p/w500${listItem.backdrop_path}`;
     }
 
     return { Poster: posterImgUrl, Backdrop: backdropImgUrl };
@@ -102,29 +104,44 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <Navbar />
-
-        {pageSelector !== "ARTISTS" ? (
-          <Route
-            exact
-            path="/"
-            render={(props) => (
-              <LandingMain
-                {...props}
-                CardTitle={cardTitle}
-                ImageBuilder={imageBuilder}
-                GenreIdToString={genreIdToString}
-              />
-            )}
-          />
-        ) : (
-          <main>Under Construction :)</main>
-        )}
+        <Switch>
+          {pageSelector !== "ARTISTS" ? (
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <LandingMain
+                  {...props}
+                  CardTitle={cardTitle}
+                  ImageBuilder={imageBuilder}
+                  GenreIdToString={genreIdToString}
+                />
+              )}
+            />
+          ) : (
+            <main>Under Construction :)</main>
+          )}
+          {itemId !== "" && itemType !== "" && (
+            <Route
+              exact
+              path="/item"
+              render={(props) => (
+                <ItemInfo
+                  {...props}
+                  CardTitle={cardTitle}
+                  ImageBuilder={imageBuilder}
+                  GenreIdToString={genreIdToString}
+                />
+              )}
+            />
+          )}
+        </Switch>
         <SearchBar />
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 

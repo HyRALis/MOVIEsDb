@@ -23,12 +23,16 @@ export const itemMovies = (movieId) => async (dispatch) => {
   const fetchedItemCredits = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${key}`
   );
-  itemData.Credits = await fetchedItemCredits.json();
+  itemData.itemCredits = await fetchedItemCredits.json();
 
   const fetchedRedomended = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${key}`
   );
   const recomendations = await fetchedRedomended.json();
+  recomendations.results &&
+    recomendations.results.forEach((movie) => {
+      movie.media_type = "movie";
+    });
   itemData.recomended = recomendations.results;
 
   await dispatch({
@@ -53,12 +57,16 @@ export const itemSeries = (seriesId) => async (dispatch) => {
   const fetchedItemCredits = await fetch(
     `https://api.themoviedb.org/3/tv/${seriesId}/credits?api_key=${key}&language=en-US`
   );
-  itemData.Credits = await fetchedItemCredits.json();
+  itemData.itemCredits = await fetchedItemCredits.json();
 
   const fetchedRedomended = await fetch(
     `https://api.themoviedb.org/3/tv/${seriesId}/recommendations?api_key=${key}&language=en-US&page=1`
   );
   const recomendations = await fetchedRedomended.json();
+  recomendations.results &&
+    recomendations.results.forEach((series) => {
+      series.media_type = "tv";
+    });
   itemData.recomended = recomendations.results;
 
   await dispatch({

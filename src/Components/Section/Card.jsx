@@ -1,9 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import "./SectionBar.scss";
+
 import Bubble from "../Bubble";
-import { Link } from "react-router-dom";
+import * as actionTypes from "../../Redux/Actions/actionTypes";
+import { setParams } from "../../Redux/Actions/detailsActions";
 
 export default function Card({
   Content,
@@ -11,12 +14,21 @@ export default function Card({
   CardTitle,
   GenreToString,
 }) {
+  const dispatch = useDispatch();
+
   const moviesGenres = useSelector((state) => state.landing.moviesGenres);
   const seriesGenres = useSelector((state) => state.landing.seriesGenres);
   const genreList = [...moviesGenres, ...seriesGenres];
+  const itemType = useSelector((state) => state.details.itemType);
+  const itemId = useSelector((state) => state.details.itemId);
 
   return (
-    <Link className="card-container">
+    <Link
+      to={`/item`}
+      style={{ textDecoration: "none" }}
+      className="card-container"
+      onClick={() => dispatch(setParams(Content.id, Content.media_type))}
+    >
       <img src={ImageBuilder(Content).Poster} alt={CardTitle(Content)} />
       <h3>{CardTitle(Content)}</h3>
       <div className="genres-container">

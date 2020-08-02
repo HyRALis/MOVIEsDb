@@ -18,6 +18,7 @@
   main {
     overflow-y: scroll;
     margin-top: $size;
+    height: inherit;
   }
 }
 

@@ -20,21 +20,16 @@ export default function details(state = initialState, action) {
     case actionTypes.fetchItemMovies:
       return {
         ...state,
-        iteminfo: payload.itemInfo,
+        itemInfo: payload.itemInfo,
         itemCredits: payload.itemCredits,
         recomended: payload.recomended,
       };
     case actionTypes.fetchItemSeries:
       return {
         ...state,
-        iteminfo: payload.itemInfo,
+        itemInfo: payload.itemInfo,
         itemCredits: payload.itemCredits,
         recomended: payload.recomended,
-      };
-    case actionTypes.details:
-      return {
-        ...state,
-        pageSelected: payload,
       };
     default:
       return state;

@@ -57,6 +57,11 @@ export default function landingReducer(state = initialState, action) {
         ...state,
         pageSelected: action.pageSelected,
       };
+    case actionTypes.details:
+      return {
+        ...state,
+        pageSelected: action.payload,
+      };
     case actionTypes.resizeWindow:
       return {
         ...state,

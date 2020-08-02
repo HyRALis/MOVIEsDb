@@ -24,6 +24,7 @@
   .nav-item {
     width: $size;
     padding: 1rem;
+    color: $linkColor;
     .nav-link {
       text-decoration: none;
       @include flex(center, center, row);

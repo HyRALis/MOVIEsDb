@@ -6,6 +6,9 @@ export const fetchRatedMovies = () => async (dispatch) => {
     `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1`
   );
   const ratedMoviesData = await fetchRatedMoviesData.json();
+  ratedMoviesData.results.forEach((movie) => {
+    movie.media_type = "movie";
+  });
 
   await dispatch({
     type: actionTypes.fetchRatedMovies,
@@ -19,6 +22,9 @@ export const fetchRatedSeries = () => async (dispatch) => {
     `https://api.themoviedb.org/3/discover/tv?api_key=${key}&language=en-US&sort_by=vote_average.desc&page=1`
   );
   const ratedSeriesData = await fetchRatedSeriesData.json();
+  ratedSeriesData.results.forEach((series) => {
+    series.media_type = "tv";
+  });
 
   await dispatch({
     type: actionTypes.fetchRatedSeries,
@@ -32,7 +38,9 @@ export const fetchTrendingMovies = () => async (dispatch) => {
     `https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`
   );
   const trendingMoviesData = await fetchTrendingMoviesData.json();
-
+  trendingMoviesData.results.forEach((movie) => {
+    movie.media_type = "movie";
+  });
   await dispatch({
     type: actionTypes.fetchTrendingMovies,
     trendingMovies: trendingMoviesData.results,
@@ -46,6 +54,9 @@ export const fetchTrendingSeries = () => async (dispatch) => {
     https://api.themoviedb.org/3/trending/tv/day?api_key=${key}`
   );
   const trendingSeriesData = await fetchTrendingSeriesData.json();
+  trendingSeriesData.results.forEach((series) => {
+    series.media_type = "tv";
+  });
 
   await dispatch({
     type: actionTypes.fetchTrendingSeries,
