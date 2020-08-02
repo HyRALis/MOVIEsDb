@@ -15,6 +15,8 @@ export default function SectionBar({
   const PopularSeries = useSelector((state) => state.landing.popularSeries);
   const RatedSeries = useSelector((state) => state.differentTab.ratedSeries);
   const TrendingAll = useSelector((state) => state.landing.trending);
+  const Recomended = useSelector((state) => state.details.recomended);
+
   const TrendingMovies = useSelector(
     (state) => state.differentTab.trendingMovies
   );
@@ -38,7 +40,8 @@ export default function SectionBar({
         return { Data: TrendingSeries, Title: "Trending Series" };
       case "TRENDING_ALL":
         return { Data: TrendingAll, Title: "Trending" };
-
+      case "RECOMENDED":
+        return { Data: Recomended, Title: "Recomended" };
       default:
         return null;
     }

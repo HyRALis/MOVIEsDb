@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import "./SectionBar.scss";
 
 import Bubble from "../Bubble";
-import * as actionTypes from "../../Redux/Actions/actionTypes";
 import { setParams } from "../../Redux/Actions/detailsActions";
 
 export default function Card({
@@ -19,8 +18,6 @@ export default function Card({
   const moviesGenres = useSelector((state) => state.landing.moviesGenres);
   const seriesGenres = useSelector((state) => state.landing.seriesGenres);
   const genreList = [...moviesGenres, ...seriesGenres];
-  const itemType = useSelector((state) => state.details.itemType);
-  const itemId = useSelector((state) => state.details.itemId);
 
   return (
     <Link

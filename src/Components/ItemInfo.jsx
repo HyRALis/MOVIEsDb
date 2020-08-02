@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -6,14 +6,17 @@ import {
   itemSeries,
   activeDetails,
 } from "../Redux/Actions/detailsActions";
+import SectionConsts from "../sectionsConsts";
 
 import "./Carousel/Carosel.scss";
 
 import CaroselSlide from "./Carousel/CaroselSlide";
 import Spinner from "./Spinner";
+import SectionBar from "./Section/SectionBar";
 
 export default function ItemInfo({ ImageBuilder, CardTitle, GenreToString }) {
   const dispatch = useDispatch();
+  const pageSelector = useSelector((state) => state.landing.pageSelected);
   const itemType = useSelector((state) => state.details.itemType);
   const itemId = useSelector((state) => state.details.itemId);
   const itemInfo = useSelector((state) => state.details.itemInfo);
@@ -27,24 +30,32 @@ export default function ItemInfo({ ImageBuilder, CardTitle, GenreToString }) {
       dispatch(itemSeries(itemId));
     }
     dispatch(activeDetails());
-  }, [dispatch]);
+  }, [dispatch, itemId]);
 
   return (
-    <main>
+    <Fragment>
       {itemInfo !== "undefined" ? (
-        <div className="carosel-container">
-          <CaroselSlide
-            Content={itemInfo}
-            ImageBuilder={ImageBuilder}
+        <main>
+          <div className="carosel-container">
+            <CaroselSlide
+              Content={itemInfo}
+              ImageBuilder={ImageBuilder}
+              CardTitle={CardTitle}
+              GenreToString={GenreToString}
+              ID={itemInfo.id}
+              inCarosel={false}
+            />
+          </div>
+          <SectionBar
+            SectionType={SectionConsts[pageSelector][0]}
             CardTitle={CardTitle}
+            ImageBuilder={ImageBuilder}
             GenreToString={GenreToString}
-            ID={itemInfo.id}
-            inCarosel={false}
           />
-        </div>
+        </main>
       ) : (
         <Spinner />
       )}
-    </main>
+    </Fragment>
   );
 }

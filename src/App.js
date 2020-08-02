@@ -133,7 +133,7 @@ function App() {
                   {...props}
                   CardTitle={cardTitle}
                   ImageBuilder={imageBuilder}
-                  GenreIdToString={genreIdToString}
+                  GenreToString={genreIdToString}
                 />
               )}
             />
