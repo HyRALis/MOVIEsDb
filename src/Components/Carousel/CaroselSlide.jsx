@@ -46,12 +46,22 @@ export default function CaroselSlide({
           <div className="slide-info">
             <h1 className="title">{CardTitle(Content)}</h1>
             <div className="genres-container">
-              {seriesGenres.length !== 0 &&
-                moviesGenres.length !== 0 &&
-                Content.genre_ids !== undefined &&
-                Content.genre_ids.map((genre) => (
-                  <Bubble key={genre} Genre={GenreToString(genre, genreList)} />
-                ))}
+              {!inCarosel
+                ? seriesGenres.length !== 0 &&
+                  moviesGenres.length !== 0 &&
+                  Content.genres !== undefined &&
+                  Content.genres.map((genre) => (
+                    <Bubble key={genre.id} Genre={genre.name} />
+                  ))
+                : seriesGenres.length !== 0 &&
+                  moviesGenres.length !== 0 &&
+                  Content.genre_ids !== undefined &&
+                  Content.genre_ids.map((genre) => (
+                    <Bubble
+                      key={genre}
+                      Genre={GenreToString(genre, genreList)}
+                    />
+                  ))}
             </div>
             <h3 className="chapter-title"> Description </h3>
             <h4 className="description">{Content.overview}</h4>

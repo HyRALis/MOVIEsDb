@@ -9,20 +9,21 @@ export default function SectionBar({
   CardTitle,
   ImageBuilder,
   GenreToString,
+  isDetails,
 }) {
   const PopularMovies = useSelector((state) => state.landing.popularMovies);
   const RatedMovies = useSelector((state) => state.differentTab.ratedMovies);
   const PopularSeries = useSelector((state) => state.landing.popularSeries);
   const RatedSeries = useSelector((state) => state.differentTab.ratedSeries);
   const TrendingAll = useSelector((state) => state.landing.trending);
-  const Recomended = useSelector((state) => state.details.recomended);
-
   const TrendingMovies = useSelector(
     (state) => state.differentTab.trendingMovies
   );
   const TrendingSeries = useSelector(
     (state) => state.differentTab.trendingSeries
   );
+
+  const Recomended = useSelector((state) => state.details.recomended);
 
   const SectionSelector = (SectionType) => {
     switch (SectionType) {
@@ -75,3 +76,5 @@ export default function SectionBar({
     </div>
   );
 }
+
+SectionBar.defauldProps = { isDetails: false };

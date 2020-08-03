@@ -46,12 +46,14 @@ export default function ItemInfo({ ImageBuilder, CardTitle, GenreToString }) {
               inCarosel={false}
             />
           </div>
-          <SectionBar
-            SectionType={SectionConsts[pageSelector][0]}
-            CardTitle={CardTitle}
-            ImageBuilder={ImageBuilder}
-            GenreToString={GenreToString}
-          />
+          {recomended !== undefined && (
+            <SectionBar
+              SectionType={SectionConsts[pageSelector][0]}
+              CardTitle={CardTitle}
+              ImageBuilder={ImageBuilder}
+              GenreToString={GenreToString}
+            />
+          )}
         </main>
       ) : (
         <Spinner />
