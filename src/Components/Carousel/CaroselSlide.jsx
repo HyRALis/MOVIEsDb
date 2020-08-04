@@ -6,6 +6,7 @@ import Bubble from "../Bubble";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { setParams } from "../../Redux/Actions/detailsActions";
+import ItemInfo from "../Info/ItemInfo";
 
 export default function CaroselSlide({
   Content,
@@ -19,15 +20,21 @@ export default function CaroselSlide({
   const dispatch = useDispatch();
   const moviesGenres = useSelector((state) => state.landing.moviesGenres);
   const seriesGenres = useSelector((state) => state.landing.seriesGenres);
-  const genreList = [...moviesGenres, ...seriesGenres];
-
   let slideNo = useSelector((state) => state.caroselState.caroselSlide);
+  const genreList = [...moviesGenres, ...seriesGenres];
 
   useEffect(() => {
     document.getElementById(`${ID}`).style.backgroundImage = `url(${
       ImageBuilder(Content).Backdrop
     })`;
   }, [Content]);
+
+  const ratingStyle = (rating) => {
+    if (rating > 6) {
+    } else if (rating < 3) {
+    } else {
+    }
+  };
 
   return (
     <div
@@ -44,7 +51,19 @@ export default function CaroselSlide({
         <div className="carosel-tint">
           <img src={ImageBuilder(Content).Poster} alt={CardTitle(Content)} />
           <div className="slide-info">
-            <h1 className="title">{CardTitle(Content)}</h1>
+            <div className="title-container">
+              {Content.homepage ? (
+                <a
+                  href={Content.homepage}
+                  style={{ color: "#de9e36", textDecoration: "none" }}
+                >
+                  <h1 className="title">{CardTitle(Content)}</h1>
+                </a>
+              ) : (
+                <h1 className="title">{CardTitle(Content)}</h1>
+              )}
+              <div className="rating">{Content.vote_average}</div>
+            </div>
             <div className="genres-container">
               {!inCarosel
                 ? seriesGenres.length !== 0 &&

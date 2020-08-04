@@ -28,15 +28,17 @@ export default function Card({
     >
       <img src={ImageBuilder(Content).Poster} alt={CardTitle(Content)} />
       <h3>{CardTitle(Content)}</h3>
-      <div className="genres-container">
-        {seriesGenres.length !== 0 &&
-        moviesGenres.length !== 0 &&
-        Content.genre_ids !== undefined
-          ? Content.genre_ids.map((genre) => (
-              <Bubble key={genre} Genre={GenreToString(genre, genreList)} />
-            ))
-          : ""}
-      </div>
+      {seriesGenres.length !== 0 &&
+      moviesGenres.length !== 0 &&
+      Content.genre_ids !== undefined ? (
+        <div className="genres-container">
+          {Content.genre_ids.map((genre) => (
+            <Bubble key={genre} Genre={GenreToString(genre, genreList)} />
+          ))}
+        </div>
+      ) : (
+        ""
+      )}
     </Link>
   );
 }

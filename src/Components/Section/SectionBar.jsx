@@ -9,7 +9,6 @@ export default function SectionBar({
   CardTitle,
   ImageBuilder,
   GenreToString,
-  isDetails,
 }) {
   const PopularMovies = useSelector((state) => state.landing.popularMovies);
   const RatedMovies = useSelector((state) => state.differentTab.ratedMovies);
@@ -48,15 +47,6 @@ export default function SectionBar({
     }
   };
 
-  // const HorisontalScrolling = (evt) => {
-  //   var delta = Math.max(
-  //     -1,
-  //     Math.min(1, window.event.wheelDelta || -window.event.detail)
-  //   );
-  //   evt.currentTarget.scrollLeft = evt.currentTarget.scrollLeft - delta * 40;
-  //   evt.preventDefault();
-  // };
-
   return (
     <div className="section-container">
       <div className="section-title">{SectionSelector(SectionType).Title}</div>
@@ -76,5 +66,3 @@ export default function SectionBar({
     </div>
   );
 }
-
-SectionBar.defauldProps = { isDetails: false };

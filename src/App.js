@@ -6,7 +6,7 @@ import "./App.scss";
 import Navbar from "./Components/Navbar";
 import LandingMain from "./Components/LandingMain";
 import SearchBar from "./Components/Search/SearchBar";
-import ItemInfo from "./Components/ItemInfo";
+import ItemInfo from "./Components/Info/ItemInfo";
 import ImageNotFound from "./Assets/images/ImageNotFound.png";
 
 import {
@@ -72,30 +72,54 @@ function App() {
   const imageBuilder = (listItem) => {
     let posterImgUrl;
     let backdropImgUrl;
-    if (listItem.poster_path == null && listItem.backdrop_path == null) {
+    let creditsImgUrl;
+    if (
+      listItem.poster_path == null &&
+      listItem.backdrop_path == null &&
+      listItem.profile_path == null
+    ) {
       posterImgUrl = ImageNotFound;
       backdropImgUrl = ImageNotFound;
+      creditsImgUrl = ImageNotFound;
     } else if (
       listItem.poster_path !== null &&
-      listItem.backdrop_path !== null
+      listItem.backdrop_path !== null &&
+      listItem.profile_path !== null
     ) {
       backdropImgUrl = `https://image.tmdb.org/t/p/original${listItem.backdrop_path}`;
       posterImgUrl = `https://image.tmdb.org/t/p/w500${listItem.poster_path}`;
+      creditsImgUrl = `https://image.tmdb.org/t/p/w500${listItem.profile_path}`;
     } else if (
       listItem.poster_path !== null &&
-      listItem.backdrop_path == null
+      listItem.backdrop_path == null &&
+      listItem.profile_path == null
     ) {
       backdropImgUrl = ImageNotFound;
       posterImgUrl = `https://image.tmdb.org/t/p/w500${listItem.poster_path}`;
+      creditsImgUrl = ImageNotFound;
     } else if (
       listItem.poster_path == null &&
-      listItem.backdrop_path !== null
+      listItem.backdrop_path !== null &&
+      listItem.profile_path == null
     ) {
       backdropImgUrl = `https://image.tmdb.org/t/p/original${listItem.backdrop_path}`;
       posterImgUrl = ImageNotFound;
+      creditsImgUrl = ImageNotFound;
+    } else if (
+      listItem.poster_path == null &&
+      listItem.backdrop_path == null &&
+      listItem.profile_path !== null
+    ) {
+      backdropImgUrl = ImageNotFound;
+      posterImgUrl = ImageNotFound;
+      creditsImgUrl = `https://image.tmdb.org/t/p/w500${listItem.profile_path}`;
     }
 
-    return { Poster: posterImgUrl, Backdrop: backdropImgUrl };
+    return {
+      Poster: posterImgUrl,
+      Backdrop: backdropImgUrl,
+      Credits: creditsImgUrl,
+    };
   };
 
   const genreIdToString = (genre_id, genreList) => {

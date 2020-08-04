@@ -1,0 +1,22 @@
+@import "../../variables.scss";
+
+.card-container {
+  width: 12rem;
+  height: fit-content;
+  margin: $marginSize;
+  @include flex(center, center, column);
+  box-sizing: border-box;
+  border-radius: 10px;
+  img {
+    width: 12rem;
+    height: 14rem;
+    object-fit: cover;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+  h3 {
+    text-align: center;
+    margin: $marginSize;
+    color: $primaryColor;
+  }
+}

@@ -5,14 +5,15 @@ import {
   itemMovies,
   itemSeries,
   activeDetails,
-} from "../Redux/Actions/detailsActions";
-import SectionConsts from "../sectionsConsts";
+} from "../../Redux/Actions/detailsActions";
+import SectionConsts from "../../sectionsConsts";
 
-import "./Carousel/Carosel.scss";
+import "../Carousel/Carosel.scss";
 
-import CaroselSlide from "./Carousel/CaroselSlide";
-import Spinner from "./Spinner";
-import SectionBar from "./Section/SectionBar";
+import CaroselSlide from "../Carousel/CaroselSlide";
+import Spinner from "../Spinner";
+import SectionBar from "../Section/SectionBar";
+import Credits from "./Credits";
 
 export default function ItemInfo({ ImageBuilder, CardTitle, GenreToString }) {
   const dispatch = useDispatch();
@@ -46,6 +47,8 @@ export default function ItemInfo({ ImageBuilder, CardTitle, GenreToString }) {
               inCarosel={false}
             />
           </div>
+          <Credits ImageBuilder={ImageBuilder} />
+
           {recomended !== undefined && (
             <SectionBar
               SectionType={SectionConsts[pageSelector][0]}
