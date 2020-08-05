@@ -41,11 +41,10 @@
       cursor: pointer;
     }
   }
-}
-
-.active {
-  background-color: $linkColor;
-  color: $primaryColor;
+  .active {
+    background-color: $linkColor;
+    color: $primaryColor;
+  }
 }
 
 @media (min-width: 800px) {

@@ -33,7 +33,7 @@ export default function Navbar() {
         <Link
           to="/"
           style={{ textDecoration: "none" }}
-          className={navActive === movies ? "nav-item active" : "nav-item"}
+          className={navActive === movies ? "active nav-item" : "nav-item"}
           onClick={() => dispatch(moviesActive())}
         >
           <li>
