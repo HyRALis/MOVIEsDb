@@ -1,0 +1,40 @@
+@import "../../variables.scss";
+
+.credits {
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: #6d6a75;
+  border-radius: 10px;
+  padding: 1rem;
+  height: fit-content;
+  width: 90%;
+  box-shadow: 15px 10px 25px 5px rgba(135, 135, 135, 0.8);
+  .credits-nav {
+    .btn-credits {
+      margin: 0 calc(#{$marginSize/2}) 0 calc(#{$marginSize/2});
+      border-style: none;
+      border-radius: 10px 10px 0 0;
+      padding: calc(#{$marginSize/2});
+      background-color: $primaryColor;
+      color: $linkColor;
+      &:hover {
+        background-color: $secundaryColor;
+        color: $linkHover;
+        cursor: pointer;
+      }
+    }
+    .active {
+      background-color: $secundaryColor;
+      color: $linkHover;
+    }
+  }
+  .credits-main {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    max-height: calc(100% - 2.5rem);
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}

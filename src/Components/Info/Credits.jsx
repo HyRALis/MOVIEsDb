@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import "./Credits.scss";
+
 import Card from "./Card";
 
 export default function Credits({ ImageBuilder }) {
@@ -11,11 +13,17 @@ export default function Credits({ ImageBuilder }) {
   return (
     <div className="credits">
       <div className="credits-nav">
-        <button className="btn-credits" onClick={() => setOption("Cast")}>
+        <button
+          className={option === "Cast" ? "active btn-credits" : "btn-credits"}
+          onClick={() => setOption("Cast")}
+        >
           Cast
         </button>
         {credits.crew !== undefined && (
-          <button className="btn-credits" onClick={(e) => setOption("Crew")}>
+          <button
+            className={option === "Crew" ? "active btn-credits" : "btn-credits"}
+            onClick={(e) => setOption("Crew")}
+          >
             Crew
           </button>
         )}
