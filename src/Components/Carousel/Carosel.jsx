@@ -9,6 +9,7 @@ import {
 import "./Carosel.scss";
 import CaroselSlide from "./CaroselSlide";
 import { changeSlide } from "../../Redux/Actions/caroselActions";
+import { useEffect } from "react";
 
 export default function Carosel({
   SectionType,
@@ -19,8 +20,13 @@ export default function Carosel({
   const PopularMovies = useSelector((state) => state.landing.popularMovies);
   const PopularSeries = useSelector((state) => state.landing.popularSeries);
   let slideNo = useSelector((state) => state.caroselState.caroselSlide);
+  const openTab = useSelector((state) => state.landing.pageSelected);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(changeSlide(0));
+  }, [dispatch, openTab]);
 
   const caroselSelector = (SectionType) => {
     switch (SectionType) {
