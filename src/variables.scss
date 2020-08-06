@@ -7,6 +7,7 @@ $marginSize: 0.5rem;
 $size: 5rem;
 $iconSize: 2.75rem;
 $fontSize: 16px;
+$fontMobile: 14px;
 
 @mixin flex($justify, $align, $direction) {
   display: flex;

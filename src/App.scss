@@ -4,7 +4,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-size: $fontSize;
+  font-size: $fontMobile;
   font-family: "Federo", sans-serif;
 }
 
@@ -24,6 +24,9 @@
 }
 
 @media (min-width: 800px) {
+  * {
+    font-size: $fontSize;
+  }
   .App {
     display: flex;
     main {
