@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./Carosel.scss";
@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { setParams } from "../../Redux/Actions/detailsActions";
 import ItemInfo from "../Info/ItemInfo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar, faHourglassHalf } from "@fortawesome/free-solid-svg-icons";
 
 export default function CaroselSlide({
   Content,
@@ -29,10 +31,11 @@ export default function CaroselSlide({
     })`;
   }, [Content]);
 
-  const ratingStyle = (rating) => {
-    if (rating > 6) {
-    } else if (rating < 3) {
-    } else {
+  const duration = (content) => {
+    if (content.runtime) {
+      return `${Content.runtime} min`;
+    } else if (content.episode_run_time) {
+      return `${Content.episode_run_time} min`;
     }
   };
 
@@ -62,7 +65,18 @@ export default function CaroselSlide({
               ) : (
                 <h1 className="title">{CardTitle(Content)}</h1>
               )}
-              <div className="rating">{Content.vote_average}</div>
+              <div className="rating">
+                <FontAwesomeIcon icon={faStar} /> {Content.vote_average}/10
+                {"   "}{" "}
+                {Content.episode_run_time ||
+                  (Content.runtime && (
+                    <Fragment>
+                      {" "}
+                      <FontAwesomeIcon icon={faHourglassHalf} />{" "}
+                      {duration(Content)}
+                    </Fragment>
+                  ))}
+              </div>
             </div>
             <div className="genres-container">
               {!inCarosel
