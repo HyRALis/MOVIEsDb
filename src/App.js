@@ -40,11 +40,8 @@ function App() {
     dispatch(fetchTrendingMovies());
     dispatch(fetchTrendingSeries());
     dispatch(fetchRatedSeries());
-  }, [dispatch]);
-
-  useEffect(() => {
     windowResize();
-  });
+  }, [dispatch]);
 
   const pageSelector = useSelector((state) => state.landing.pageSelected);
   const itemType = useSelector((state) => state.details.itemType);

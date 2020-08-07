@@ -19,13 +19,14 @@ export default function Carosel({
 }) {
   const PopularMovies = useSelector((state) => state.landing.popularMovies);
   const PopularSeries = useSelector((state) => state.landing.popularSeries);
-  let slideNo = useSelector((state) => state.caroselState.caroselSlide);
+  const slideNo = useSelector((state) => state.caroselState.caroselSlide);
   const openTab = useSelector((state) => state.landing.pageSelected);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(changeSlide(0));
+    console.log("rerender");
   }, [dispatch, openTab]);
 
   const caroselSelector = (SectionType) => {
@@ -39,23 +40,25 @@ export default function Carosel({
     }
   };
   const increment = (slideNo, array) => {
-    let slideNumber = Math.abs(slideNo);
+    const slideNumber = Math.abs(slideNo);
+    let slideParam = slideNo;
     if (slideNumber < array.length - 1) {
-      slideNo += 1;
-      dispatch(changeSlide(slideNo));
+      slideParam += 1;
+      dispatch(changeSlide(slideParam));
     } else if (slideNumber === array.length - 1) {
-      slideNo = 0;
-      dispatch(changeSlide(slideNo));
+      slideParam = 0;
+      dispatch(changeSlide(slideParam));
     }
   };
   const decrement = (slideNo, array) => {
     let slideNumber = Math.abs(slideNo);
+    let slideParam = slideNo;
     if (slideNumber < array.length - 1) {
-      slideNo -= 1;
-      dispatch(changeSlide(slideNo));
+      slideParam -= 1;
+      dispatch(changeSlide(slideParam));
     } else if (slideNumber === array.length - 1) {
-      slideNo = 0;
-      dispatch(changeSlide(slideNo));
+      slideParam = 0;
+      dispatch(changeSlide(slideParam));
     }
   };
 
@@ -64,6 +67,11 @@ export default function Carosel({
     translate = slideNo * 100;
     return translate;
   };
+
+  // setTimeout(() => {
+  //   console.log(slideNo);
+  //   decrement(slideNo, caroselSelector(SectionType));
+  // }, 5000);
 
   return (
     <div className="carosel-container">

@@ -35,7 +35,7 @@ export default function CaroselSlide({
     if (content.runtime) {
       return `${Content.runtime} min`;
     } else if (content.episode_run_time) {
-      return `${Content.episode_run_time} min`;
+      return `${Content.episode_run_time[0]} min`;
     }
   };
 
@@ -68,14 +68,13 @@ export default function CaroselSlide({
               <div className="rating">
                 <FontAwesomeIcon icon={faStar} /> {Content.vote_average}/10
                 {"   "}{" "}
-                {Content.episode_run_time ||
-                  (Content.runtime && (
-                    <Fragment>
-                      {" "}
-                      <FontAwesomeIcon icon={faHourglassHalf} />{" "}
-                      {duration(Content)}
-                    </Fragment>
-                  ))}
+                {(Content.episode_run_time || Content.runtime) && (
+                  <Fragment>
+                    {" "}
+                    <FontAwesomeIcon icon={faHourglassHalf} />{" "}
+                    {duration(Content)}
+                  </Fragment>
+                )}
               </div>
             </div>
             <div className="genres-container">
