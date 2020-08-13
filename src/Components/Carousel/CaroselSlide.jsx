@@ -39,6 +39,10 @@ export default function CaroselSlide({
     }
   };
 
+  // const descShrotener = (description) => {
+  //   const shortDes = description.split(". ")[0];
+  //   return `${shortDes}.`;
+  // };
   return (
     <div
       className="slide-container"

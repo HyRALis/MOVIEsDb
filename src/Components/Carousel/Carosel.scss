@@ -88,6 +88,13 @@
             margin: 1rem;
             margin-left: 0;
           }
+          .description {
+            width: inherit;
+            height: 4.9rem;
+            overflow: hidden;
+            white-space: pre-wrap;
+            text-overflow: ellipsis;
+          }
           .btn-cta {
             margin-top: 1rem;
             margin-bottom: 1rem;

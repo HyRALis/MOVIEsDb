@@ -52,10 +52,11 @@ export default function SectionBar({
       <div className="section-title">{SectionSelector(SectionType).Title}</div>
       <div className="section-main">
         {PopularMovies.length !== 0
-          ? SectionSelector(SectionType).Data.map((item) => (
+          ? SectionSelector(SectionType).Data.map((item, index) => (
               <Card
                 key={item.id}
                 Content={item}
+                Index={index}
                 CardTitle={CardTitle}
                 ImageBuilder={ImageBuilder}
                 GenreToString={GenreToString}

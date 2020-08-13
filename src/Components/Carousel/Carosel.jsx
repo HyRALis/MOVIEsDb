@@ -24,11 +24,6 @@ export default function Carosel({
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(changeSlide(0));
-    console.log("rerender");
-  }, [dispatch, openTab]);
-
   const caroselSelector = (SectionType) => {
     switch (SectionType) {
       case "POPULAR_MOVIES":
@@ -68,10 +63,23 @@ export default function Carosel({
     return translate;
   };
 
-  // setTimeout(() => {
-  //   console.log(slideNo);
-  //   decrement(slideNo, caroselSelector(SectionType));
-  // }, 5000);
+  useEffect(() => {
+    console.log("1 executed");
+    setTimeout(() => {
+      decrement(slideNo, caroselSelector(SectionType));
+    }, 4000);
+  }, []);
+
+  useEffect(() => {
+    dispatch(changeSlide(0));
+  }, [dispatch, openTab]);
+
+  useEffect(() => {
+    let timeout = setTimeout(() => {
+      decrement(slideNo, caroselSelector(SectionType));
+    }, 4000);
+    return () => clearTimeout(timeout);
+  }, [decrement, slideNo, caroselSelector, SectionType]);
 
   return (
     <div className="carosel-container">

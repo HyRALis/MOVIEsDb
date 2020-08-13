@@ -41,7 +41,7 @@ function App() {
     dispatch(fetchTrendingSeries());
     dispatch(fetchRatedSeries());
     windowResize();
-  }, [dispatch]);
+  }, [dispatch, width]);
 
   const pageSelector = useSelector((state) => state.landing.pageSelected);
   const itemType = useSelector((state) => state.details.itemType);
@@ -49,11 +49,6 @@ function App() {
 
   const windowResize = () => {
     window.addEventListener("resize", dispatch(changeWidth(window.innerWidth)));
-    dispatch(changeWidth(window.innerWidth));
-    window.removeEventListener(
-      "resize",
-      dispatch(changeWidth(window.innerWidth))
-    );
   };
 
   const cardTitle = (listItem) => {
@@ -84,15 +79,15 @@ function App() {
       listItem.profile_path !== null
     ) {
       backdropImgUrl = `https://image.tmdb.org/t/p/original${listItem.backdrop_path}`;
-      posterImgUrl = `https://image.tmdb.org/t/p/w500${listItem.poster_path}`;
-      creditsImgUrl = `https://image.tmdb.org/t/p/w500${listItem.profile_path}`;
+      posterImgUrl = `https://image.tmdb.org/t/p/w200${listItem.poster_path}`;
+      creditsImgUrl = `https://image.tmdb.org/t/p/w200${listItem.profile_path}`;
     } else if (
       listItem.poster_path !== null &&
       listItem.backdrop_path == null &&
       listItem.profile_path == null
     ) {
       backdropImgUrl = ImageNotFound;
-      posterImgUrl = `https://image.tmdb.org/t/p/w500${listItem.poster_path}`;
+      posterImgUrl = `https://image.tmdb.org/t/p/w200${listItem.poster_path}`;
       creditsImgUrl = ImageNotFound;
     } else if (
       listItem.poster_path == null &&
@@ -109,7 +104,7 @@ function App() {
     ) {
       backdropImgUrl = ImageNotFound;
       posterImgUrl = ImageNotFound;
-      creditsImgUrl = `https://image.tmdb.org/t/p/w500${listItem.profile_path}`;
+      creditsImgUrl = `https://image.tmdb.org/t/p/w200${listItem.profile_path}`;
     }
 
     return {
