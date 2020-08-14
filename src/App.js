@@ -78,7 +78,7 @@ function App() {
       listItem.backdrop_path !== null &&
       listItem.profile_path !== null
     ) {
-      backdropImgUrl = `https://image.tmdb.org/t/p/original${listItem.backdrop_path}`;
+      backdropImgUrl = `https://image.tmdb.org/t/p/w1280${listItem.backdrop_path}`;
       posterImgUrl = `https://image.tmdb.org/t/p/w200${listItem.poster_path}`;
       creditsImgUrl = `https://image.tmdb.org/t/p/w200${listItem.profile_path}`;
     } else if (
@@ -94,7 +94,7 @@ function App() {
       listItem.backdrop_path !== null &&
       listItem.profile_path == null
     ) {
-      backdropImgUrl = `https://image.tmdb.org/t/p/original${listItem.backdrop_path}`;
+      backdropImgUrl = `https://image.tmdb.org/t/p/w1280${listItem.backdrop_path}`;
       posterImgUrl = ImageNotFound;
       creditsImgUrl = ImageNotFound;
     } else if (

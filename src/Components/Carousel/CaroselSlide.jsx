@@ -29,7 +29,7 @@ export default function CaroselSlide({
     document.getElementById(`${ID}`).style.backgroundImage = `url(${
       ImageBuilder(Content).Backdrop
     })`;
-  }, [Content]);
+  }, [Content, ImageBuilder]);
 
   const duration = (content) => {
     if (content.runtime) {
@@ -39,10 +39,6 @@ export default function CaroselSlide({
     }
   };
 
-  // const descShrotener = (description) => {
-  //   const shortDes = description.split(". ")[0];
-  //   return `${shortDes}.`;
-  // };
   return (
     <div
       className="slide-container"

@@ -25,7 +25,7 @@ export default function Card({ Content, ImageBuilder, Index }) {
   return (
     <div className="card-container">
       <img
-        loading="lazy"
+        loading={lazyLoading(Index, width)}
         src={ImageBuilder(Content).Credits}
         alt={Content.name}
       />

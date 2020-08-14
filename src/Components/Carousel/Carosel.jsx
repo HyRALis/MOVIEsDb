@@ -64,7 +64,6 @@ export default function Carosel({
   };
 
   useEffect(() => {
-    console.log("1 executed");
     setTimeout(() => {
       decrement(slideNo, caroselSelector(SectionType));
     }, 4000);
