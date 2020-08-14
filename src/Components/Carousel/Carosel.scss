@@ -50,12 +50,7 @@
         background-color: rgba(0, 0, 0, 0.6);
         @include flex(none, center, row);
         img {
-          margin-left: 2rem;
-          width: 13rem;
-          height: 16rem;
-          object-fit: cover;
-          box-sizing: border-box;
-          border-radius: 10px;
+          display: none;
         }
         .slide-info {
           margin-left: 2rem;
@@ -64,14 +59,15 @@
           .title-container {
             @include flex(none, center, row);
             .title {
-              font-size: 2.5rem;
+              font-size: 2rem;
               margin: 1rem;
               margin-left: 0;
             }
             .rating {
-              font-size: 1.5rem;
+              font-size: 1.3rem;
               font-weight: bold;
               padding: $marginSize 1rem;
+              @include flex(none, none, column);
               border-style: solid;
               border-radius: 10px;
               border-color: $primaryColor;
@@ -109,6 +105,37 @@
               background-color: $secundaryColor;
               color: $linkHover;
               cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .carosel-container {
+    .slide-container {
+      .backdrop-carosel {
+        .carosel-tint {
+          img {
+            display: block;
+            margin-left: 2rem;
+            width: 13rem;
+            height: 16rem;
+            object-fit: cover;
+            box-sizing: border-box;
+            border-radius: 10px;
+          }
+          .slide-info {
+            .title-container {
+              .title {
+                font-size: 2.5rem;
+              }
+              .rating {
+                font-size: 1.5rem;
+                @include flex(none, none, row);
+              }
             }
           }
         }

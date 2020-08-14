@@ -11,10 +11,10 @@
   width: 90%;
   .credits-nav {
     .btn-credits {
-      margin: 0 calc(#{$marginSize/2}) 0 calc(#{$marginSize/2});
+      margin: 0 0 $marginSize $marginSize;
       border-style: none;
-      border-radius: 10px 10px 0 0;
-      padding: calc(#{$marginSize/2});
+      border-radius: 10px;
+      padding: $marginSize;
       background-color: $primaryColor;
       color: $linkColor;
       &:hover {

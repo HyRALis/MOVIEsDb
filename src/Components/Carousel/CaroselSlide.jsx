@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./Carosel.scss";
@@ -6,7 +6,6 @@ import Bubble from "../Bubble";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { setParams } from "../../Redux/Actions/detailsActions";
-import ItemInfo from "../Info/ItemInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHourglassHalf } from "@fortawesome/free-solid-svg-icons";
 
@@ -66,14 +65,16 @@ export default function CaroselSlide({
                 <h1 className="title">{CardTitle(Content)}</h1>
               )}
               <div className="rating">
-                <FontAwesomeIcon icon={faStar} /> {Content.vote_average}/10
-                {"   "}{" "}
+                <div>
+                  <FontAwesomeIcon icon={faStar} /> {Content.vote_average}/10
+                </div>
+
                 {(Content.episode_run_time || Content.runtime) && (
-                  <Fragment>
+                  <div>
                     {" "}
                     <FontAwesomeIcon icon={faHourglassHalf} />{" "}
                     {duration(Content)}
-                  </Fragment>
+                  </div>
                 )}
               </div>
             </div>

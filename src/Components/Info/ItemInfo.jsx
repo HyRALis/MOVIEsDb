@@ -21,7 +21,6 @@ export default function ItemInfo({ ImageBuilder, CardTitle, GenreToString }) {
   const itemType = useSelector((state) => state.details.itemType);
   const itemId = useSelector((state) => state.details.itemId);
   const itemInfo = useSelector((state) => state.details.itemInfo);
-  const itemCredits = useSelector((state) => state.details.itemCredits);
   const recomended = useSelector((state) => state.details.recomended);
 
   useEffect(() => {
