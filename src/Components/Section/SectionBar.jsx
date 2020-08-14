@@ -1,8 +1,11 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
 
 import "./SectionBar.scss";
-import Card from "./Card";
+
+import Spinner from "../Spinner";
+// import Card from "./Card";
+const Card = lazy(() => import("./Card"));
 
 export default function SectionBar({
   SectionType,
@@ -53,14 +56,16 @@ export default function SectionBar({
       <div className="section-main">
         {PopularMovies.length !== 0
           ? SectionSelector(SectionType).Data.map((item, index) => (
-              <Card
-                key={item.id}
-                Content={item}
-                Index={index}
-                CardTitle={CardTitle}
-                ImageBuilder={ImageBuilder}
-                GenreToString={GenreToString}
-              />
+              <Suspense key={item.id} fallback={<Spinner />}>
+                <Card
+                  key={item.id}
+                  Content={item}
+                  Index={index}
+                  CardTitle={CardTitle}
+                  ImageBuilder={ImageBuilder}
+                  GenreToString={GenreToString}
+                />
+              </Suspense>
             ))
           : ""}
       </div>

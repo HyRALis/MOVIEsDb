@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,9 +7,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./Carosel.scss";
-import CaroselSlide from "./CaroselSlide";
+
 import { changeSlide } from "../../Redux/Actions/caroselActions";
-import { useEffect } from "react";
+
+import Spinner from "../Spinner";
+const CaroselSlide = lazy(() => import("./CaroselSlide"));
 
 export default function Carosel({
   SectionType,
@@ -103,17 +105,19 @@ export default function Carosel({
       </button>
       {PopularMovies.length !== 0
         ? caroselSelector(SectionType).map((item, index) => (
-            <CaroselSlide
-              key={item.id}
-              Content={item}
-              CardTitle={CardTitle}
-              ImageBuilder={ImageBuilder}
-              GenreToString={GenreToString}
-              CaroselCss={caroselCss}
-              CaroselSelector={caroselSelector}
-              SectionType={SectionType}
-              ID={item.id}
-            />
+            <Suspense key={item.id} fallback={<Spinner />}>
+              <CaroselSlide
+                key={item.id}
+                Content={item}
+                CardTitle={CardTitle}
+                ImageBuilder={ImageBuilder}
+                GenreToString={GenreToString}
+                CaroselCss={caroselCss}
+                CaroselSelector={caroselSelector}
+                SectionType={SectionType}
+                ID={item.id}
+              />
+            </Suspense>
           ))
         : ""}
     </section>

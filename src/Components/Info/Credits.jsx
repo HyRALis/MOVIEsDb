@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./Credits.scss";
 
-import Card from "./Card";
+import Spinner from "../Spinner";
+const Card = lazy(() => import("./Card"));
 
 export default function Credits({ ImageBuilder }) {
   const dispatch = useDispatch();
@@ -33,12 +34,16 @@ export default function Credits({ ImageBuilder }) {
           {option === "Crew" &&
             credits.crew !== undefined &&
             credits.crew.map((item, index) => (
-              <Card key={index} Content={item} ImageBuilder={ImageBuilder} />
+              <Suspense key={item.id} fallback={<Spinner />}>
+                <Card key={index} Content={item} ImageBuilder={ImageBuilder} />
+              </Suspense>
             ))}
           {option === "Cast" &&
             credits.cast !== undefined &&
             credits.cast.map((item, index) => (
-              <Card key={index} Content={item} ImageBuilder={ImageBuilder} />
+              <Suspense key={item.id} fallback={<Spinner />}>
+                <Card key={index} Content={item} ImageBuilder={ImageBuilder} />
+              </Suspense>
             ))}
         </div>
       )}
