@@ -4,12 +4,11 @@
   margin: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  background-color: #6d6a75;
+  background-color: $linkColor;
   border-radius: 10px;
   padding: 1rem;
   height: 25rem;
   width: 90%;
-  box-shadow: 15px 10px 25px 5px rgba(135, 135, 135, 0.8);
   @include flex(none, none, column);
   .section-title {
     margin-bottom: 1rem;
@@ -40,6 +39,7 @@
       h3 {
         margin: $marginSize;
         color: $primaryColor;
+        font-size: 1.1rem;
       }
       .genres-container {
         width: 100%;

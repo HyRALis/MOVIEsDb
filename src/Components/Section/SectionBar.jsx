@@ -48,7 +48,7 @@ export default function SectionBar({
   };
 
   return (
-    <div className="section-container">
+    <section className="section-container">
       <div className="section-title">{SectionSelector(SectionType).Title}</div>
       <div className="section-main">
         {PopularMovies.length !== 0
@@ -64,6 +64,6 @@ export default function SectionBar({
             ))
           : ""}
       </div>
-    </div>
+    </section>
   );
 }

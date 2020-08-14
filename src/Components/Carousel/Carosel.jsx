@@ -81,9 +81,10 @@ export default function Carosel({
   }, [decrement, slideNo, caroselSelector, SectionType]);
 
   return (
-    <div className="carosel-container">
+    <section className="carosel-container">
       {slideNo !== 0 ? (
         <button
+          aria-label="Slide left"
           id="goLeft"
           onClick={(e) => increment(slideNo, caroselSelector(SectionType))}
         >
@@ -94,6 +95,7 @@ export default function Carosel({
       )}
 
       <button
+        aria-label="Slide right"
         id="goRight"
         onClick={(e) => decrement(slideNo, caroselSelector(SectionType))}
       >
@@ -114,6 +116,6 @@ export default function Carosel({
             />
           ))
         : ""}
-    </div>
+    </section>
   );
 }

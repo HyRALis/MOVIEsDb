@@ -13,6 +13,9 @@
   .nav-logo {
     height: $size;
     width: $size;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .navbar-list {
     width: 100%;
@@ -27,12 +30,20 @@
     color: $linkColor;
     .nav-link {
       text-decoration: none;
+      color: $linkColor;
       @include flex(center, center, row);
       .nav-text {
         margin-left: 1.5rem;
         display: none;
         font-size: 1.4rem;
       }
+      &:hover {
+        background-color: $secundaryColor;
+        color: $linkHover;
+      }
+    }
+    .active {
+      color: $primaryColor;
     }
     &:hover {
       background-color: $secundaryColor;

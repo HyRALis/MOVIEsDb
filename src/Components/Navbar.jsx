@@ -22,7 +22,7 @@ export default function Navbar() {
   let navActive = useSelector((state) => state.landing.pageSelected);
 
   return (
-    <div className="navbar-container">
+    <nav className="navbar-container">
       <img
         className="nav-logo"
         src={logo}
@@ -30,50 +30,43 @@ export default function Navbar() {
         onClick={() => dispatch(homeActive())}
       />
       <ul className="navbar-list">
-        <Link
-          to="/"
-          style={{ textDecoration: "none" }}
-          className={navActive === movies ? "active nav-item" : "nav-item"}
-          onClick={() => dispatch(moviesActive())}
-        >
-          <li>
-            <div className="nav-link">
-              <MovieIcon height="2.75rem" width="2.75rem" fill="currentColor" />
-              <span className="nav-text">Movies</span>
-            </div>
-          </li>
-        </Link>
-        <Link
-          to="/"
-          style={{ textDecoration: "none" }}
-          className={navActive === series ? "nav-item active" : "nav-item"}
-          onClick={() => dispatch(seriesActive())}
-        >
-          <li>
-            <div className="nav-link">
-              <TVIcon height="2.75rem" width="2.75rem" fill="currentColor" />
-              <span className="nav-text">TV series</span>
-            </div>
-          </li>
-        </Link>
-        <Link
-          to="/"
-          style={{ textDecoration: "none" }}
-          className={navActive === artists ? "nav-item active" : "nav-item"}
-          onClick={() => dispatch(artistActive())}
-        >
-          <li>
-            <div className="nav-link">
-              <ArtistIcon
-                height="2.75rem"
-                width="2.75rem"
-                fill="currentColor"
-              />
-              <span className="nav-text">Artists</span>
-            </div>
-          </li>
-        </Link>
+        <li className={navActive === movies ? "nav-item active" : "nav-item"}>
+          <Link
+            aria-label="Discover Movies"
+            to="/"
+            style={{ textDecoration: "none" }}
+            className={navActive === movies ? "nav-link active" : "nav-link"}
+            onClick={() => dispatch(moviesActive())}
+          >
+            <MovieIcon height="2.75rem" width="2.75rem" fill="currentColor" />
+            <span className="nav-text">Movies</span>
+          </Link>
+        </li>
+        <li className={navActive === series ? "nav-item active" : "nav-item"}>
+          <Link
+            aria-label="Discover Series"
+            to="/"
+            style={{ textDecoration: "none" }}
+            className={navActive === series ? "nav-link active" : "nav-link"}
+            onClick={() => dispatch(seriesActive())}
+          >
+            <TVIcon height="2.75rem" width="2.75rem" fill="currentColor" />
+            <span className="nav-text">TV series</span>
+          </Link>
+        </li>
+        <li className={navActive === artists ? "nav-item active" : "nav-item"}>
+          <Link
+            aria-label="Discover Artists"
+            to="/"
+            style={{ textDecoration: "none" }}
+            className={navActive === artists ? "nav-link active" : "nav-link"}
+            onClick={() => dispatch(artistActive())}
+          >
+            <ArtistIcon height="2.75rem" width="2.75rem" fill="currentColor" />
+            <span className="nav-text">Artists</span>
+          </Link>
+        </li>
       </ul>
-    </div>
+    </nav>
   );
 }
