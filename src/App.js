@@ -10,8 +10,8 @@ import ItemInfo from "./Components/Info/ItemInfo";
 import ImageNotFound from "./Assets/images/ImageNotFound.png";
 
 import {
-  fetchPopuMovies,
-  fetchPopuSeries,
+  fetchPoluparMovies,
+  fetchPoluparSeries,
   fetchTrendingAll,
   fetchMoviesGenres,
   fetchSeriesGenres,
@@ -33,8 +33,8 @@ function App() {
   useEffect(() => {
     dispatch(fetchMoviesGenres());
     dispatch(fetchSeriesGenres());
-    dispatch(fetchPopuMovies());
-    dispatch(fetchPopuSeries());
+    dispatch(fetchPoluparMovies());
+    dispatch(fetchPoluparSeries());
     dispatch(fetchTrendingAll());
     dispatch(fetchRatedMovies());
     dispatch(fetchTrendingMovies());

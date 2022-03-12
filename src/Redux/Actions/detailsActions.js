@@ -8,12 +8,12 @@ export const setParams = (id, itemType) => async (dispatch) => {
 };
 
 export const itemMovies = (movieId) => async (dispatch) => {
+  const key = "a7bc4dc45ae0ba1dc816316bb6356b0d";
   const itemData = {
     itemInfo: {},
     itemCredits: {},
     recomended: [],
   };
-  const key = "a7bc4dc45ae0ba1dc816316bb6356b0d";
 
   const fetchedItemInfo = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}&language=en-US`
@@ -28,7 +28,9 @@ export const itemMovies = (movieId) => async (dispatch) => {
   const fetchedRedomended = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${key}`
   );
+
   const recomendations = await fetchedRedomended.json();
+
   recomendations.results &&
     recomendations.results.forEach((movie) => {
       movie.media_type = "movie";
@@ -42,12 +44,13 @@ export const itemMovies = (movieId) => async (dispatch) => {
 };
 
 export const itemSeries = (seriesId) => async (dispatch) => {
+  const key = "a7bc4dc45ae0ba1dc816316bb6356b0d";
+  
   const itemData = {
     itemInfo: {},
     itemCredits: {},
     recomended: [],
   };
-  const key = "a7bc4dc45ae0ba1dc816316bb6356b0d";
 
   const fetchedItemInfo = await fetch(
     `https://api.themoviedb.org/3/tv/${seriesId}?api_key=${key}&language=en-US`

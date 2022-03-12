@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionTypes";
 
-export const fetchPopuMovies = () => async (dispatch) => {
+export const fetchPoluparMovies = () => async (dispatch) => {
   const key = "a7bc4dc45ae0ba1dc816316bb6356b0d";
   const fetchedMoviesData = await fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false`
@@ -11,12 +11,12 @@ export const fetchPopuMovies = () => async (dispatch) => {
   });
 
   await dispatch({
-    type: actionTypes.fetchPopuMovies,
+    type: actionTypes.fetchPoluparMovies,
     movies: MoviesData.results,
   });
 };
 
-export const fetchPopuSeries = () => async (dispatch) => {
+export const fetchPoluparSeries = () => async (dispatch) => {
   const key = "a7bc4dc45ae0ba1dc816316bb6356b0d";
   const fetchedSeriesData = await fetch(
     `https://api.themoviedb.org/3/discover/tv?api_key=${key}&language=en-US&sort_by=popularity.desc&page=1&include_null_first_air_dates=false`
@@ -27,7 +27,7 @@ export const fetchPopuSeries = () => async (dispatch) => {
   });
 
   await dispatch({
-    type: actionTypes.fetchPopuSeries,
+    type: actionTypes.fetchPoluparSeries,
     series: SeriesData.results,
   });
 };

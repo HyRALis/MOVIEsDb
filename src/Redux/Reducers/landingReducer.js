@@ -12,12 +12,12 @@ let initialState = {
 
 export default function landingReducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.fetchPopuMovies:
+    case actionTypes.fetchPoluparMovies:
       return {
         ...state,
         popularMovies: action.movies,
       };
-    case actionTypes.fetchPopuSeries:
+    case actionTypes.fetchPoluparSeries:
       return {
         ...state,
         popularSeries: action.series,

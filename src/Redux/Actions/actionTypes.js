@@ -1,8 +1,8 @@
-export const fetchPopuMovies = "FETCH_POPULAR_MOVIES";
+export const fetchPoluparMovies = "FETCH_POPULAR_MOVIES";
 export const fetchRatedMovies = "FETCH_RATED_MOVIES";
 export const fetchTrendingMovies = "FETCH_TRENDING_MOVIES";
 
-export const fetchPopuSeries = "FETCH_POPULAR_SERIES";
+export const fetchPoluparSeries = "FETCH_POPULAR_SERIES";
 export const fetchRatedSeries = "FETCH_RATED_SERIES";
 export const fetchTrendingSeries = "FETCH_TRENDING_SERIES";
 
