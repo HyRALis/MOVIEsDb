@@ -21,14 +21,15 @@ export default function CaroselSlide({
   const dispatch = useDispatch();
   const moviesGenres = useSelector((state) => state.landing.moviesGenres);
   const seriesGenres = useSelector((state) => state.landing.seriesGenres);
-  let slideNo = useSelector((state) => state.caroselState.caroselSlide);
   const genreList = [...moviesGenres, ...seriesGenres];
+  
+  let slideNo = useSelector((state) => state.caroselState.caroselSlide);
 
   useEffect(() => {
     document.getElementById(`${ID}`).style.backgroundImage = `url(${
       ImageBuilder(Content).Backdrop
     })`;
-  }, [Content, ImageBuilder]);
+  }, [Content, ImageBuilder,ID]);
 
   const duration = (content) => {
     if (content.runtime) {
