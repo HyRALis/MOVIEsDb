@@ -1,60 +1,58 @@
 @import "../../variables.scss";
 
 .carosel-container {
-  width: 100%;
-  height: 70%;
-  position: relative;
   @include flex(none, center, row);
   color: $primaryColor;
+  height: 70%;
   overflow: hidden;
+  position: relative;
+  width: 100%;
   %button-nav {
-    position: absolute;
-    outline: none;
     background-color: #de9e3610;
-    color: $primaryColor;
     border: none;
+    border-radius: 1rem;
+    bottom: 1rem;
+    color: $primaryColor;
     cursor: pointer;
-    z-index: 10;
     width: 10%;
-    height: 100%;
+    height: 5rem;
+    outline: none;
+    position: absolute;
+    z-index: 10;
     &:hover {
       background-color: rgba(209, 209, 209, 0.6);
     }
   }
   #goLeft {
-    left: 0;
     @extend %button-nav;
+    left: 1rem;
   }
   #goRight {
-    right: 0;
     @extend %button-nav;
-  }
-  .dot-nav {
-  }
-  .active {
+    right: 1rem;
   }
   .slide-container {
-    min-width: 100%;
     height: 100%;
+    min-width: 100%;
     transition: 0.5s;
 
     .backdrop-carosel {
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
       background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
       .carosel-tint {
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
         @include flex(none, center, row);
+        background-color: rgba(0, 0, 0, 0.6);
+        height: 100%;
+        width: 100%;
         img {
           display: none;
         }
         .slide-info {
-          margin-left: 2rem;
           @include flex(center, flex-start, column);
+          margin-left: 2rem;
           text-align: left;
           .title-container {
             @include flex(none, center, row);
@@ -64,15 +62,15 @@
               margin-left: 0;
             }
             .rating {
+              color: $primaryColor;
+              border-color: $primaryColor;
+              border-radius: 10px;
+              border-style: solid;
+              border-width: thin;
               font-size: 1.3rem;
               font-weight: bold;
               padding: $marginSize 1rem;
               @include flex(none, none, column);
-              border-style: solid;
-              border-radius: 10px;
-              border-color: $primaryColor;
-              border-width: thin;
-              color: $primaryColor;
             }
           }
           .genres-container {
@@ -85,22 +83,22 @@
             margin-left: 0;
           }
           .description {
-            width: inherit;
             height: 4.9rem;
             overflow: hidden;
-            white-space: pre-wrap;
             text-overflow: ellipsis;
+            white-space: pre-wrap;
+            width: inherit;
           }
           .btn-cta {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
+            background-color: $primaryColor;
             border: none;
             border-radius: 10px;
-            padding: $marginSize;
-            background-color: $primaryColor;
             color: $linkColor;
             font-size: 1.1rem;
             font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding: $marginSize;
             &:hover {
               background-color: $secundaryColor;
               color: $linkHover;
@@ -119,13 +117,13 @@
       .backdrop-carosel {
         .carosel-tint {
           img {
-            display: block;
-            margin-left: 2rem;
-            width: 13rem;
-            height: 16rem;
-            object-fit: cover;
-            box-sizing: border-box;
             border-radius: 10px;
+            box-sizing: border-box;
+            display: block;
+            height: 16rem;
+            margin-left: 2rem;
+            object-fit: cover;
+            width: 13rem;
           }
           .slide-info {
             .title-container {
@@ -133,8 +131,8 @@
                 font-size: 2.5rem;
               }
               .rating {
-                font-size: 1.5rem;
                 @include flex(none, none, row);
+                font-size: 1.5rem;
               }
             }
           }

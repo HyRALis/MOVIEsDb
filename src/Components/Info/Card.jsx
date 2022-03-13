@@ -33,7 +33,7 @@ export default function Card({ Content, ImageBuilder, Index }) {
       {Content.character !== undefined ? (
         <h3> Playing as {Content.character} </h3>
       ) : (
-        <h3> Position: {Content.job} </h3>
+        <h3> {Content.job} </h3>
       )}
     </div>
   );
