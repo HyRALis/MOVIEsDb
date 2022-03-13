@@ -33,7 +33,7 @@
     flex-direction: row;
     text-align: center;
     max-height: calc(100% - 2.5rem);
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
   }
 }
